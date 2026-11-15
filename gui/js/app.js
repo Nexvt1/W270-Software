@@ -823,40 +823,55 @@ async function loadGamesGuide() {
       const card = document.createElement('div');
       card.className = 'game-card';
 
-      const tipsHtml = (p.in_game_tips || []).map(tip => `<li>${escapeHtml(tip)}</li>`).join('');
+      const tips = p.in_game_tips || [];
+      const tipsHtml = tips.map(tip => `<li>${escapeHtml(tip)}</li>`).join('');
       const gameNm = ((p.ffb || 70) / 100.0) * MAX_W270_TORQUE_NM;
       const safeId = escapeHtml(p.id);
+      const isDefaultProfile = p.id === 'default_w270' || p.id === 'padrao';
+      const coverSrc = p.image ? escapeHtml(p.image) : (isDefaultProfile ? 'assets/pcyes_w270_wheel.png' : `assets/games/${safeId}.jpg`);
+      const coverClass = isDefaultProfile ? 'game-cover-img fallback' : 'game-cover-img';
 
       card.innerHTML = `
-        <div class="game-card-header">
-          <div>
-            <div class="game-title">${escapeHtml(p.name)}</div>
-            <div class="game-category">${escapeHtml(p.category || p.game)}</div>
+        <div class="game-cover-wrap">
+          <img
+            src="${coverSrc}"
+            alt="${escapeHtml(p.name)}"
+            class="${coverClass}"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='assets/pcyes_w270_wheel.png';this.classList.add('fallback');"
+          />
+          <div class="game-cover-overlay"></div>
+          <span class="game-angle-badge">${escapeHtml(p.angle)}°</span>
+        </div>
+
+        <div class="game-card-body">
+          <div class="game-card-header">
+            <div>
+              <div class="game-title">${escapeHtml(p.name)}</div>
+              <div class="game-category">${escapeHtml(p.category || p.game)}</div>
+            </div>
           </div>
-          <span class="btn-indicator" style="font-size:12px; border-color:var(--pcyes-red); color:#fff; background:var(--pcyes-red);">${escapeHtml(p.angle)}°</span>
-        </div>
 
-        <div class="game-specs-strip">
-          <span>Rotação: <strong>${escapeHtml(p.angle)}°</strong></span> &bull;
-          <span>Torque: <strong style="color:var(--pcyes-red);">${gameNm.toFixed(2)} Nm (${escapeHtml(p.ffb)}%)</strong></span> &bull;
-          <span>Modo: <strong>${escapeHtml(p.mode_required || "D-Input")}</strong></span>
-        </div>
-
-        <div style="font-size:12.5px; color:#cbd5e1;">${escapeHtml(p.description || "")}</div>
-
-        <div class="game-guide-box">
-          <div style="font-weight:800; color:var(--accent-cyan); display:flex; align-items:center; gap:6px;">
-            <svg style="width:14px; height:14px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            Guia de Configuração no Jogo (Sem Suporte Oficial):
+          <div class="game-specs-strip">
+            <span><strong>${escapeHtml(p.angle)}°</strong></span> &bull;
+            <span>Torque: <strong style="color:var(--pcyes-red);">${gameNm.toFixed(2)} Nm (${escapeHtml(p.ffb)}%)</strong></span> &bull;
+            <span><strong>${escapeHtml(p.mode_required || "D-Input")}</strong></span>
           </div>
-          <ul>${tipsHtml}</ul>
-        </div>
 
-        <div style="display:flex; gap:10px; margin-top:8px;">
-          <button class="btn btn-primary" style="flex:1;" onclick="applyProfile('${safeId}')">
-            ⚡ Aplicar ${gameNm.toFixed(2)} Nm no W270
-          </button>
-          <button class="btn" onclick="exportProfile('${safeId}')">Exportar</button>
+          ${p.description ? `<div class="game-desc" title="${escapeHtml(p.description)}">${escapeHtml(p.description)}</div>` : ''}
+
+          ${tips.length ? `
+          <details class="game-guide-details">
+            <summary>Guia no jogo (${tips.length})</summary>
+            <ul>${tipsHtml}</ul>
+          </details>` : ''}
+
+          <div class="game-card-actions">
+            <button class="btn btn-primary" style="flex:1;" onclick="applyProfile('${safeId}')">
+              ⚡ Aplicar ${gameNm.toFixed(2)} Nm
+            </button>
+            <button class="btn" onclick="exportProfile('${safeId}')">Exportar</button>
+          </div>
         </div>
       `;
       grid.appendChild(card);
