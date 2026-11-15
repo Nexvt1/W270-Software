@@ -779,6 +779,23 @@
     </div>
   </div>
 
+  <!-- Modal Confirmar Exclusão de Perfil -->
+  <div id="deleteProfileModal" class="modal-overlay">
+    <div class="modal-card" style="max-width:420px; width:90%; background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:20px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="margin:0; font-size:16px; color:#fff;">Excluir Perfil de Jogo</h3>
+        <button class="modal-close-btn" onclick="closeDeleteProfileModal()">&times;</button>
+      </div>
+      <p style="font-size:13px; color:var(--text-muted); line-height:1.5; margin-bottom:18px;">
+        Tem certeza que deseja excluir o perfil <strong id="deleteProfileNameLabel" style="color:#fff;"></strong>? Esta ação removerá o perfil da sua lista.
+      </p>
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button class="btn" onclick="closeDeleteProfileModal()">Cancelar</button>
+        <button class="btn btn-danger" onclick="confirmDeleteProfile()">Excluir Perfil</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notificação PCYES -->
   <div id="toast" class="toast">
     <span id="toastMsg">Configurações gravadas com sucesso!</span>

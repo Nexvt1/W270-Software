@@ -236,6 +236,19 @@ body {
   box-shadow: 0 0 14px var(--accent-cyan-glow);
 }
 
+.btn-danger {
+  background: rgba(227, 6, 19, 0.14);
+  border-color: rgba(227, 6, 19, 0.45);
+  color: #ff4d58;
+}
+
+.btn-danger:hover {
+  background: var(--pcyes-red);
+  border-color: var(--pcyes-red);
+  color: #fff;
+  box-shadow: 0 0 14px var(--pcyes-red-glow);
+}
+
 .btn-sm {
   padding: 5px 11px;
   font-size: 11.5px;

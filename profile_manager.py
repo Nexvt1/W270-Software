@@ -1249,7 +1249,26 @@ DEFAULT_PROFILES = [
 class ProfileManager:
     def __init__(self):
         os.makedirs(PROFILES_DIR, exist_ok=True)
+        self._deleted_file = os.path.join(PROFILES_DIR, ".deleted_profiles.json")
         self._ensure_defaults()
+
+    def _get_deleted_ids(self) -> set:
+        if os.path.exists(self._deleted_file):
+            try:
+                with open(self._deleted_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if isinstance(data, list):
+                        return set(data)
+            except Exception:
+                pass
+        return set()
+
+    def _save_deleted_ids(self, deleted_ids: set):
+        try:
+            with open(self._deleted_file, "w", encoding="utf-8") as f:
+                json.dump(sorted(list(deleted_ids)), f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"[ProfileManager] Erro ao salvar lista de excluídos: {e}")
 
     @staticmethod
     def _sanitize_id(profile_id: str) -> str:
@@ -1261,7 +1280,10 @@ class ProfileManager:
         return os.path.join(PROFILES_DIR, f"{safe_id}.json")
 
     def _ensure_defaults(self):
+        deleted_ids = self._get_deleted_ids()
         for prof in DEFAULT_PROFILES:
+            if prof["id"] in deleted_ids and prof["id"] not in ("padrao", "default_w270"):
+                continue
             filepath = self._profile_path(prof["id"])
             # Cria arquivos padrão apenas se ainda não existirem, preservando edições do usuário
             if not os.path.exists(filepath):
@@ -1271,7 +1293,7 @@ class ProfileManager:
     def list_profiles(self) -> List[Dict[str, Any]]:
         profiles = []
         for filename in sorted(os.listdir(PROFILES_DIR)):
-            if filename.endswith(".json"):
+            if filename.endswith(".json") and not filename.startswith("."):
                 path = os.path.join(PROFILES_DIR, filename)
                 try:
                     with open(path, "r", encoding="utf-8") as f:
@@ -1299,6 +1321,10 @@ class ProfileManager:
         try:
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(profile, f, indent=4, ensure_ascii=False)
+            deleted_ids = self._get_deleted_ids()
+            if profile_id in deleted_ids:
+                deleted_ids.discard(profile_id)
+                self._save_deleted_ids(deleted_ids)
             return True
         except Exception as e:
             print(f"[ProfileManager] Erro ao salvar {profile_id}: {e}")
@@ -1312,6 +1338,11 @@ class ProfileManager:
         if os.path.exists(path):
             try:
                 os.remove(path)
+                default_ids = {p["id"] for p in DEFAULT_PROFILES}
+                if safe_id in default_ids:
+                    deleted_ids = self._get_deleted_ids()
+                    deleted_ids.add(safe_id)
+                    self._save_deleted_ids(deleted_ids)
                 return True
             except Exception as e:
                 print(f"[ProfileManager] Erro ao deletar: {e}")

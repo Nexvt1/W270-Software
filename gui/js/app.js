@@ -870,7 +870,18 @@ async function loadGamesGuide() {
             <button class="btn btn-primary" style="flex:1;" onclick="applyProfile('${safeId}')">
               ⚡ Aplicar ${gameNm.toFixed(2)} Nm
             </button>
-            <button class="btn" onclick="exportProfile('${safeId}')">Exportar</button>
+            <button class="btn" onclick="exportProfile('${safeId}')" title="Exportar perfil em JSON">Exportar</button>
+            ${!isDefaultProfile ? `
+            <button class="btn btn-danger" data-id="${safeId}" data-name="${escapeHtml(p.name)}" onclick="promptDeleteProfile(this.dataset.id, this.dataset.name)" title="Excluir perfil de jogo" aria-label="Excluir perfil">
+              <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+              </svg>
+              Excluir
+            </button>` : ''}
           </div>
         </div>
       `;
@@ -918,8 +929,15 @@ async function submitCreateProfile() {
   }
 
   const category = (catInput ? catInput.value : '').trim() || "Simulação";
+  const slug = name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+  const profileId = slug || `perfil_${Date.now()}`;
   const profile = {
-    id: name.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+    id: profileId,
     name: name,
     game: name,
     category: category,
@@ -946,6 +964,48 @@ async function submitCreateProfile() {
     await window.pywebview.api.save_profile(profile);
     showToast(`Perfil "${name}" salvo!`, "success");
     loadGamesGuide();
+  }
+}
+
+let pendingDeleteProfileId = null;
+let pendingDeleteProfileName = '';
+
+function promptDeleteProfile(profileId, profileName) {
+  if (!profileId || profileId === 'default_w270' || profileId === 'padrao') {
+    showToast("O perfil padrão de fábrica não pode ser excluído.", "error");
+    return;
+  }
+  pendingDeleteProfileId = profileId;
+  pendingDeleteProfileName = profileName || profileId;
+  const label = document.getElementById('deleteProfileNameLabel');
+  if (label) label.textContent = `"${pendingDeleteProfileName}"`;
+  const modal = document.getElementById('deleteProfileModal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeDeleteProfileModal() {
+  const modal = document.getElementById('deleteProfileModal');
+  if (modal) modal.classList.remove('active');
+  pendingDeleteProfileId = null;
+  pendingDeleteProfileName = '';
+}
+
+async function confirmDeleteProfile() {
+  const profileId = pendingDeleteProfileId;
+  const profileName = pendingDeleteProfileName;
+  closeDeleteProfileModal();
+  if (!profileId || !window.pywebview || !window.pywebview.api) return;
+
+  try {
+    const ok = await window.pywebview.api.delete_profile(profileId);
+    if (ok) {
+      showToast(`Perfil "${profileName}" excluído com sucesso!`, "success");
+      loadGamesGuide();
+    } else {
+      showToast("Não foi possível excluir este perfil.", "error");
+    }
+  } catch (e) {
+    showToast("Erro ao excluir perfil.", "error");
   }
 }
 
