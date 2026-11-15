@@ -65,29 +65,45 @@ async function applySafeThermalMode() {
   showToast("Modo de Segurança ativado! Torque reduzido para 40% (1.28 Nm) para resfriar os motores.", "success");
 }
 
-// Nomes oficiais dos 18 botões físicos do aro do W270
+// Nomes oficiais dos 18 botões físicos do aro do W270 + chaves do câmbio
 const BUTTON_LIST = [
-  { id: 10, name: "A / Cruz (Botão 1)" },
-  { id: 9,  name: "B / Círculo (Botão 2)" },
-  { id: 11, name: "X / Quadrado (Botão 3)" },
-  { id: 8,  name: "Y / Triângulo (Botão 4)" },
-  { id: 12, name: "Borboleta Esq (L1 / LB)" },
-  { id: 13, name: "Borboleta Dir (R1 / RB)" },
-  { id: 14, name: "L2 / LT (Gatilho Esq)" },
-  { id: 15, name: "R2 / RT (Gatilho Dir)" },
-  { id: 1,  name: "L3 (Analógico Esq)" },
-  { id: 2,  name: "R3 (Analógico Dir)" },
-  { id: 4,  name: "D-Pad Cima" },
-  { id: 6,  name: "D-Pad Baixo" },
-  { id: 7,  name: "D-Pad Esquerda" },
-  { id: 5,  name: "D-Pad Direita" },
-  { id: 0,  name: "View / Back" },
-  { id: 3,  name: "Menu / Start" },
-  { id: 16, name: "Home / Guia" },
-  { id: 17, name: "Share / Capture" },
-  { id: 25, name: "Freio de Mão (Câmbio)" },
-  { id: 26, name: "Caixa Alta/Baixa (Câmbio)" },
+  { id: 10, name: "A / Cruz (Botão 1)", short: "A / Cruz" },
+  { id: 9,  name: "B / Círculo (Botão 2)", short: "B / Círculo" },
+  { id: 11, name: "X / Quadrado (Botão 3)", short: "X / Quad." },
+  { id: 8,  name: "Y / Triângulo (Botão 4)", short: "Y / Triâng." },
+  { id: 12, name: "Borboleta Esq (L1 / LB)", short: "Borb. Esq" },
+  { id: 13, name: "Borboleta Dir (R1 / RB)", short: "Borb. Dir" },
+  { id: 14, name: "L2 / LT (Gatilho Esq)", short: "L2 / LT" },
+  { id: 15, name: "R2 / RT (Gatilho Dir)", short: "R2 / RT" },
+  { id: 1,  name: "L3 (Analógico Esq)", short: "L3" },
+  { id: 2,  name: "R3 (Analógico Dir)", short: "R3" },
+  { id: 4,  name: "D-Pad Cima", short: "D-Pad ↑" },
+  { id: 6,  name: "D-Pad Baixo", short: "D-Pad ↓" },
+  { id: 7,  name: "D-Pad Esquerda", short: "D-Pad ←" },
+  { id: 5,  name: "D-Pad Direita", short: "D-Pad →" },
+  { id: 0,  name: "View / Back", short: "View" },
+  { id: 3,  name: "Menu / Start", short: "Menu" },
+  { id: 16, name: "Home / Guia", short: "Home" },
+  { id: 17, name: "Share / Capture", short: "Share" },
+  { id: 25, name: "Freio de Mão (Câmbio)", short: "Freio Mão" },
+  { id: 26, name: "Caixa Alta/Baixa (Câmbio)", short: "Cx Alta/Bx" },
 ];
+
+function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function onPywebviewReady() {
+  syncUIWithDeviceState();
+  loadGamesGuide();
+}
+
+window.addEventListener('pywebviewready', onPywebviewReady);
 
 document.addEventListener('DOMContentLoaded', () => {
   initButtonMappingUI();
@@ -95,7 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPedalChart();
   updateFfbSlider(currentWheelState.ffb);
   startStatusWatcher();
-  loadGamesGuide();
+  if (window.pywebview && window.pywebview.api) {
+    onPywebviewReady();
+  }
 });
 
 // Troca de Abas
@@ -230,11 +248,40 @@ async function syncUIWithDeviceState() {
         document.getElementById('switchFfbReverse').checked = data.ffbReverse;
         currentWheelState.ffbReverse = data.ffbReverse;
       }
+      if (data.mode !== undefined) {
+        currentWheelState.mode = data.mode;
+        const btn = document.getElementById('btnMode');
+        if (btn) {
+          if (data.mode === 1) {
+            btn.textContent = "Modo: PC (D-Input)";
+            btn.style.borderColor = "var(--pcyes-red)";
+          } else {
+            btn.textContent = "Modo: PC (X-Input)";
+            btn.style.borderColor = "var(--accent-cyan)";
+          }
+        }
+      }
       if (data.spring !== undefined) document.getElementById('sliderSpring').value = data.spring;
       if (data.damping !== undefined) document.getElementById('sliderDamping').value = data.damping;
       if (data.friction !== undefined) document.getElementById('sliderFriction').value = data.friction;
       if (data.inertia !== undefined) document.getElementById('sliderInertia').value = data.inertia;
-      updateForceLabels();
+      updateForceSlider();
+
+      if (Array.isArray(data.accChart) && data.accChart.length === 4) currentWheelState.accChart = data.accChart;
+      if (Array.isArray(data.brakeChart) && data.brakeChart.length === 4) currentWheelState.brakeChart = data.brakeChart;
+      if (Array.isArray(data.clutchChart) && data.clutchChart.length === 4) currentWheelState.clutchChart = data.clutchChart;
+      selectPedal(activePedal);
+
+      if (data.keymap && typeof data.keymap === 'object') {
+        currentWheelState.keymap = data.keymap;
+        BUTTON_LIST.forEach(btn => {
+          const sel = document.getElementById(`map-select-${btn.id}`);
+          if (sel) {
+            const mapped = data.keymap[btn.id] ?? data.keymap[String(btn.id)];
+            sel.value = mapped !== undefined ? mapped : btn.id;
+          }
+        });
+      }
     }
   } catch (e) {
     console.error("Erro ao sincronizar com W270:", e);
@@ -248,10 +295,11 @@ function updateAngleSlider(val) {
   document.getElementById('sliderAngle').value = val;
   document.getElementById('valAngle').textContent = `${val}°`;
 
-  document.querySelectorAll('.preset-pills .pill').forEach(p => p.classList.remove('active'));
-  if (val === 900) {
-    const p900 = document.getElementById('pill900');
-    if (p900) p900.classList.add('active');
+  const angleContainer = document.getElementById('anglePresets');
+  if (angleContainer) {
+    angleContainer.querySelectorAll('.pill').forEach(p => {
+      p.classList.toggle('active', parseInt(p.dataset.angle) === val);
+    });
   }
 }
 
@@ -301,11 +349,13 @@ function updateFfbSlider(val) {
   const sidebarTorque = document.getElementById('sidebarTorque');
   if (sidebarTorque) sidebarTorque.textContent = `${nm.toFixed(2)} Nm (${val}%)`;
 
-  // Atualiza pills ativas
-  ['pillFfb70'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.classList.toggle('active', val === 70);
-  });
+  // Atualiza pills ativas do FFB
+  const ffbContainer = document.getElementById('ffbPresets');
+  if (ffbContainer) {
+    ffbContainer.querySelectorAll('.pill').forEach(p => {
+      p.classList.toggle('active', parseInt(p.dataset.ffb) === val);
+    });
+  }
 }
 
 function setFfbPreset(percent) {
@@ -426,6 +476,12 @@ function applyPedalPreset(presetName) {
 
   const chartKey = `${activePedal}Chart`;
   currentWheelState[chartKey] = pts;
+  const pedalContainer = document.getElementById('pedalPresets');
+  if (pedalContainer) {
+    pedalContainer.querySelectorAll('.pill').forEach(p => {
+      p.classList.toggle('active', p.dataset.preset === presetName);
+    });
+  }
   selectPedal(activePedal);
   showToast(`Preset ${presetName.toUpperCase()} aplicado aos pedais.`);
 }
@@ -502,7 +558,7 @@ function initTestMatrixUI() {
     const el = document.createElement('div');
     el.className = 'btn-indicator';
     el.id = `test-btn-${btn.id}`;
-    el.textContent = btn.name.split(' ')[0];
+    el.textContent = btn.short || btn.name.split(' ')[0];
     matrix.appendChild(el);
   });
 }
@@ -703,45 +759,51 @@ function renderLiveTelemetry(data) {
 
   // Botões e switches do W270
   if (data.buttons) {
+    let hbPressed;
+    let rangePressed;
+
     if (Array.isArray(data.buttons)) {
       data.buttons.forEach((pressed, i) => {
         const el = document.getElementById(`test-btn-${i}`);
         if (el) {
-          if (pressed) el.classList.add('active');
-          else el.classList.remove('active');
+          el.classList.toggle('active', Boolean(pressed));
         }
       });
-      // Handbrake (Botão 25)
-      const hb = document.getElementById('ind-handbrake');
-      if (hb && data.buttons[25] !== undefined) {
-        if (data.buttons[25]) {
-          hb.textContent = "PUXADO (ATIVO)";
-          hb.classList.add('active');
-        } else {
-          hb.textContent = "Desacionado";
-          hb.classList.remove('active');
-        }
-      }
-      // Range Splitter (Botão 26)
-      const range = document.getElementById('ind-range');
-      if (range && data.buttons[26] !== undefined) {
-        if (data.buttons[26]) {
-          range.textContent = "CAIXA ALTA (7ª a 12ª)";
-          range.classList.add('active');
-        } else {
-          range.textContent = "Caixa Baixa (1ª a 6ª)";
-          range.classList.remove('active');
-        }
-      }
+      hbPressed = data.buttons[25];
+      rangePressed = data.buttons[26];
     } else {
       Object.keys(data.buttons).forEach(k => {
         const pressed = data.buttons[k];
         const el = document.getElementById(`test-btn-${k}`);
         if (el) {
-          if (pressed) el.classList.add('active');
-          else el.classList.remove('active');
+          el.classList.toggle('active', Boolean(pressed));
         }
       });
+      hbPressed = data.buttons[25] ?? data.buttons['25'];
+      rangePressed = data.buttons[26] ?? data.buttons['26'];
+    }
+
+    // Handbrake (Botão 25)
+    const hb = document.getElementById('ind-handbrake');
+    if (hb && hbPressed !== undefined) {
+      if (hbPressed) {
+        hb.textContent = "PUXADO (ATIVO)";
+        hb.classList.add('active');
+      } else {
+        hb.textContent = "Desacionado";
+        hb.classList.remove('active');
+      }
+    }
+    // Range Splitter (Botão 26)
+    const range = document.getElementById('ind-range');
+    if (range && rangePressed !== undefined) {
+      if (rangePressed) {
+        range.textContent = "CAIXA ALTA (7ª a 12ª)";
+        range.classList.add('active');
+      } else {
+        range.textContent = "Caixa Baixa (1ª a 6ª)";
+        range.classList.remove('active');
+      }
     }
   }
 }
@@ -761,25 +823,26 @@ async function loadGamesGuide() {
       const card = document.createElement('div');
       card.className = 'game-card';
 
-      const tipsHtml = (p.in_game_tips || []).map(tip => `<li>${tip}</li>`).join('');
+      const tipsHtml = (p.in_game_tips || []).map(tip => `<li>${escapeHtml(tip)}</li>`).join('');
       const gameNm = ((p.ffb || 70) / 100.0) * MAX_W270_TORQUE_NM;
+      const safeId = escapeHtml(p.id);
 
       card.innerHTML = `
         <div class="game-card-header">
           <div>
-            <div class="game-title">${p.name}</div>
-            <div class="game-category">${p.category || p.game}</div>
+            <div class="game-title">${escapeHtml(p.name)}</div>
+            <div class="game-category">${escapeHtml(p.category || p.game)}</div>
           </div>
-          <span class="btn-indicator" style="font-size:12px; border-color:var(--pcyes-red); color:#fff; background:var(--pcyes-red);">${p.angle}°</span>
+          <span class="btn-indicator" style="font-size:12px; border-color:var(--pcyes-red); color:#fff; background:var(--pcyes-red);">${escapeHtml(p.angle)}°</span>
         </div>
 
         <div class="game-specs-strip">
-          <span>Rotação: <strong>${p.angle}°</strong></span> &bull;
-          <span>Torque: <strong style="color:var(--pcyes-red);">${gameNm.toFixed(2)} Nm (${p.ffb}%)</strong></span> &bull;
-          <span>Modo: <strong>${p.mode_required || "D-Input"}</strong></span>
+          <span>Rotação: <strong>${escapeHtml(p.angle)}°</strong></span> &bull;
+          <span>Torque: <strong style="color:var(--pcyes-red);">${gameNm.toFixed(2)} Nm (${escapeHtml(p.ffb)}%)</strong></span> &bull;
+          <span>Modo: <strong>${escapeHtml(p.mode_required || "D-Input")}</strong></span>
         </div>
 
-        <div style="font-size:12.5px; color:#cbd5e1;">${p.description || ""}</div>
+        <div style="font-size:12.5px; color:#cbd5e1;">${escapeHtml(p.description || "")}</div>
 
         <div class="game-guide-box">
           <div style="font-weight:800; color:var(--accent-cyan); display:flex; align-items:center; gap:6px;">
@@ -790,10 +853,10 @@ async function loadGamesGuide() {
         </div>
 
         <div style="display:flex; gap:10px; margin-top:8px;">
-          <button class="btn btn-primary" style="flex:1;" onclick="applyProfile('${p.id}')">
+          <button class="btn btn-primary" style="flex:1;" onclick="applyProfile('${safeId}')">
             ⚡ Aplicar ${gameNm.toFixed(2)} Nm no W270
           </button>
-          <button class="btn" onclick="exportProfile('${p.id}')">Exportar</button>
+          <button class="btn" onclick="exportProfile('${safeId}')">Exportar</button>
         </div>
       `;
       grid.appendChild(card);
@@ -815,11 +878,31 @@ async function applyProfile(profileId) {
   }
 }
 
-async function showSaveProfileModal() {
-  const name = prompt("Nome do jogo ou simulador (Ex: Assetto Corsa EVO):");
-  if (!name) return;
+function showSaveProfileModal() {
+  const modal = document.getElementById('createProfileModal');
+  const nameInput = document.getElementById('newProfileName');
+  const catInput = document.getElementById('newProfileCategory');
+  if (nameInput) nameInput.value = '';
+  if (catInput) catInput.value = 'Simulação';
+  if (modal) modal.classList.add('active');
+  if (nameInput) nameInput.focus();
+}
 
-  const category = prompt("Categoria (Ex: Drift, GT3, Rally):") || "Simulação";
+function closeCreateProfileModal() {
+  const modal = document.getElementById('createProfileModal');
+  if (modal) modal.classList.remove('active');
+}
+
+async function submitCreateProfile() {
+  const nameInput = document.getElementById('newProfileName');
+  const catInput = document.getElementById('newProfileCategory');
+  const name = (nameInput ? nameInput.value : '').trim();
+  if (!name) {
+    showToast("Informe o nome do jogo ou simulador.", "error");
+    return;
+  }
+
+  const category = (catInput ? catInput.value : '').trim() || "Simulação";
   const profile = {
     id: name.toLowerCase().replace(/[^a-z0-9]/g, '_'),
     name: name,
@@ -843,6 +926,7 @@ async function showSaveProfileModal() {
     keymap: currentWheelState.keymap
   };
 
+  closeCreateProfileModal();
   if (window.pywebview && window.pywebview.api) {
     await window.pywebview.api.save_profile(profile);
     showToast(`Perfil "${name}" salvo!`, "success");
@@ -929,8 +1013,11 @@ function updateCalibrationUI() {
       const pCfg = calibrationState.pedals[p];
       if (pCfg) {
         const pUpper = p.charAt(0).toUpperCase() + p.slice(1);
+        const dzVal = pCfg.deadzone_low || 0;
         const dzEl = document.getElementById(`calib${pUpper}DzLow`);
-        if (dzEl) dzEl.textContent = `${(pCfg.deadzone_low || 0).toFixed(1)}%`;
+        if (dzEl) dzEl.textContent = `${dzVal.toFixed(1)}%`;
+        const sliderEl = document.getElementById(`slider${pUpper}DzLow`);
+        if (sliderEl) sliderEl.value = dzVal;
       }
     });
   }
@@ -941,8 +1028,14 @@ async function calibrateCurrentCenter() {
     try {
       const res = await window.pywebview.api.set_wheel_center();
       if (res && res.success) {
-        showToast(`Centro 0.0° calibrado com sucesso! (Offset: ${res.offset.toFixed(4)})`, "success");
+        if (res.usb_connected === false) {
+          showToast("Centro calibrado no hardware via Bluetooth (conecte o USB para calibrar o eixo PC).", "success");
+        } else {
+          showToast(`Centro 0.0° calibrado com sucesso! (Offset: ${res.offset.toFixed(4)})`, "success");
+        }
         await loadCalibrationData();
+      } else {
+        showToast("Conecte o volante via USB ou Bluetooth para calibrar o centro.", "error");
       }
     } catch (e) {
       showToast("Erro ao calibrar centro do volante.", "error");
@@ -1021,17 +1114,18 @@ function startAutoPedalCalib() {
   }
 
   const pedalExtremes = {
-    acc: { min: 1.0, max: -1.0 },
-    brake: { min: 1.0, max: -1.0 },
-    clutch: { min: 1.0, max: -1.0 }
+    acc: { min: -Infinity, max: Infinity, hasSample: false },
+    brake: { min: -Infinity, max: Infinity, hasSample: false },
+    clutch: { min: -Infinity, max: Infinity, hasSample: false }
   };
 
   const timer = setInterval(() => {
-    if (lastTelemetryData) {
+    if (lastTelemetryData && lastTelemetryData.source === 'usb') {
       ['acc', 'brake', 'clutch'].forEach(p => {
         const k = p === 'acc' ? 'rawAcc' : (p === 'brake' ? 'rawBrake' : 'rawClutch');
         const v = lastTelemetryData[k];
         if (typeof v === 'number') {
+          pedalExtremes[p].hasSample = true;
           if (v > pedalExtremes[p].min) pedalExtremes[p].min = v;
           if (v < pedalExtremes[p].max) pedalExtremes[p].max = v;
         }
@@ -1047,10 +1141,19 @@ function startAutoPedalCalib() {
       btn.style.background = "";
     }
 
+    let anyCalibrated = false;
     ['acc', 'brake', 'clutch'].forEach(p => {
-      calibrationState.pedals[p].min_raw = round4(pedalExtremes[p].min);
-      calibrationState.pedals[p].max_raw = round4(pedalExtremes[p].max);
+      if (pedalExtremes[p].hasSample && Math.abs(pedalExtremes[p].max - pedalExtremes[p].min) > 0.05) {
+        calibrationState.pedals[p].min_raw = round4(pedalExtremes[p].min);
+        calibrationState.pedals[p].max_raw = round4(pedalExtremes[p].max);
+        anyCalibrated = true;
+      }
     });
+
+    if (!anyCalibrated) {
+      showToast("Nenhum movimento USB de pedal detectado durante os 5s.", "error");
+      return;
+    }
 
     await saveFullCalibration();
     showToast("Auto-calibração concluída! Todos os pedais foram calibrados com precisão.", "success");

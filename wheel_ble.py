@@ -194,6 +194,7 @@ class WheelBLEManager:
 
         except Exception as e:
             print(f"[BLE] Falha ao conectar: {e}")
+            self.client = None
             self.is_connecting = False
             self.is_connected = False
             if self.on_connection_change:
@@ -301,9 +302,11 @@ class WheelBLEManager:
     def reset_settings(self):
         """Restaura padrões de fábrica."""
         mode = self.state.get("mode", 1)
-        self.send_packet(build_reset_packet(mode))
-        # Re-lê tudo após reset
-        self._run_async(self._read_initial_data())
+        async def _reset():
+            await self._send_packet_coro(build_reset_packet(mode))
+            await asyncio.sleep(0.3)
+            await self._read_initial_data()
+        self._run_async(_reset())
 
     def switch_mode(self, mode: int):
         """Alterna modo (1 ou 2)."""
@@ -321,7 +324,26 @@ class WheelBLEManager:
 
     def apply_full_profile(self, profile_data: dict):
         """Grava perfil completo (todos os 6 blocos) na memória do volante."""
+        params = list(self.profile.get("params", [900, 70, 60, 60, 70, 70]))
+        if "params" in profile_data and isinstance(profile_data["params"], list):
+            params = list(profile_data["params"])
+        else:
+            if "angle" in profile_data:
+                params[0] = int(profile_data["angle"])
+            if "ffb" in profile_data:
+                params[1] = int(profile_data["ffb"])
+            if "spring" in profile_data:
+                params[2] = int(profile_data["spring"])
+            if "damping" in profile_data:
+                params[3] = int(profile_data["damping"])
+            if "friction" in profile_data:
+                params[4] = int(profile_data["friction"])
+            if "inertia" in profile_data:
+                params[5] = int(profile_data["inertia"])
+
         self.profile.update(profile_data)
+        self.profile["params"] = params
+
         async def _apply():
             mode = self.state.get("mode", 1)
             for i in range(6):

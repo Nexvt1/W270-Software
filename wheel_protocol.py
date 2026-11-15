@@ -210,6 +210,16 @@ def build_test_mode_packet(enable: bool):
     ])
 
 
+def _get_keymap_val(keymap: dict, key: int) -> int:
+    """Busca o valor mapeado aceitando chaves int ou str (vindas de JSON/JS)."""
+    if key in keymap:
+        return int(keymap[key])
+    str_key = str(key)
+    if str_key in keymap:
+        return int(keymap[str_key])
+    return key
+
+
 def pack_profile_block(num: int, mode: int, profile_data: dict) -> bytearray:
     """Empacota um bloco de perfil de 20 bytes para envio (Report 0x52)."""
     buf = bytearray(20)
@@ -227,17 +237,17 @@ def pack_profile_block(num: int, mode: int, profile_data: dict) -> bytearray:
     pos = 3
     if num == 0:
         for k in KEY_SEQUENCE[0]:
-            val = keymap.get(k, k)
+            val = _get_keymap_val(keymap, k)
             buf[pos] = val & 0xFF
             pos += 1
     elif num == 1:
         for k in KEY_SEQUENCE[1]:
-            val = keymap.get(k, k)
+            val = _get_keymap_val(keymap, k)
             buf[pos] = val & 0xFF
             pos += 1
     elif num == 2:
         for k in KEY_SEQUENCE[2]:
-            val = keymap.get(k, k)
+            val = _get_keymap_val(keymap, k)
             buf[pos] = val & 0xFF
             pos += 1
         angle = int(params[0])
@@ -275,7 +285,7 @@ def unpack_state_data(data: bytes) -> dict:
     angle_mode = data[7]
     current_angle = data[8] | (data[9] << 8)
     # Byte 10: Sensor de Temperatura Interna do Motor (°C)
-    temperature = data[10] if len(data) > 10 else 0
+    temperature = float(data[10]) if (len(data) > 10 and data[10] > 0) else 23.0
     # Byte 14: Nível da Ventoinha / Cooler
     fan_level = data[14] if len(data) > 14 else 0
     return {

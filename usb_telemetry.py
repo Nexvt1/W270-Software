@@ -28,7 +28,7 @@ class MotorThermalModel:
         self.temp = ambient_temp
         self.last_time: Optional[float] = None
         self.c_thermal = 380.0  # Capacidade térmica dos enrolamentos e carcaça metálica
-        self.k_cool = 0.04      # Coeficiente de dissipação térmica passiva
+        self.k_cool = 0.6       # Coeficiente de dissipação térmica convectiva (W/°C)
 
     def update(self, torque_nm: float, now: float) -> float:
         if self.last_time is None:
@@ -39,14 +39,14 @@ class MotorThermalModel:
         self.last_time = now
 
         # Potência térmica dos motores: proporcional ao quadrado do torque aplicado
-        # Motores duplos em 3.2 Nm total geram ~16-20W de perda Joule em esforço máximo
+        # Motores duplos em 3.2 Nm total geram ~24W de perda Joule em esforço máximo
         heat_power = 2.4 * (torque_nm ** 2)
 
-        # Resfriamento convectivo em direção à temperatura ambiente
+        # Resfriamento convectivo em direção à temperatura ambiente (em Watts)
         cooling_power = self.k_cool * (self.temp - self.ambient)
 
-        # Delta de temperatura
-        d_temp = ((heat_power / self.c_thermal) - cooling_power) * dt
+        # Delta de temperatura (ambos os fluxos divididos pela capacidade térmica)
+        d_temp = ((heat_power - cooling_power) / self.c_thermal) * dt
         self.temp += d_temp
         # Limita fisicamente entre temperatura ambiente e 85°C (ponto de corte térmico)
         self.temp = max(self.ambient, min(85.0, self.temp))
@@ -97,10 +97,15 @@ class USBTelemetryReader:
 
         while self.running:
             try:
+                # Atualiza eventos do Pygame mesmo sem joystick conectado para detectar hot-plug
+                pygame.event.pump()
                 count = pygame.joystick.get_count()
                 if count == 0:
-                    self.joystick = None
-                    self.joystick_name = ""
+                    if self.joystick is not None:
+                        self.joystick = None
+                        self.joystick_name = ""
+                        if self.on_data:
+                            self.on_data({})
                     time.sleep(0.5)
                     continue
 
@@ -116,8 +121,6 @@ class USBTelemetryReader:
                     if self.joystick is None:
                         self.joystick = pygame.joystick.Joystick(0)
                         self.joystick_name = self.joystick.get_name()
-
-                pygame.event.pump()
 
                 num_axes = self.joystick.get_numaxes()
                 axes = [self.joystick.get_axis(i) for i in range(num_axes)]
@@ -173,6 +176,11 @@ class USBTelemetryReader:
 
             except Exception as e:
                 print(f"[USB Telemetry] Erro: {e}")
+                if self.joystick is not None:
+                    self.joystick = None
+                    self.joystick_name = ""
+                    if self.on_data:
+                        self.on_data({})
                 time.sleep(0.5)
 
         pygame.quit()

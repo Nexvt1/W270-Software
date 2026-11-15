@@ -5,6 +5,7 @@ Inclui otimizações de 3.2 Nm e 1080° para simuladores e jogos sem suporte ofi
 
 import json
 import os
+import re
 import shutil
 from typing import List, Dict, Any, Optional
 
@@ -1479,12 +1480,22 @@ class ProfileManager:
         os.makedirs(PROFILES_DIR, exist_ok=True)
         self._ensure_defaults()
 
+    @staticmethod
+    def _sanitize_id(profile_id: str) -> str:
+        safe = re.sub(r"[^a-zA-Z0-9_-]", "_", str(profile_id or "")).strip("_")
+        return safe or "perfil"
+
+    def _profile_path(self, profile_id: str) -> str:
+        safe_id = self._sanitize_id(profile_id)
+        return os.path.join(PROFILES_DIR, f"{safe_id}.json")
+
     def _ensure_defaults(self):
         for prof in DEFAULT_PROFILES:
-            filepath = os.path.join(PROFILES_DIR, f"{prof['id']}.json")
-            # Atualiza ou cria arquivos padrão
-            with open(filepath, "w", encoding="utf-8") as f:
-                json.dump(prof, f, indent=4, ensure_ascii=False)
+            filepath = self._profile_path(prof["id"])
+            # Cria arquivos padrão apenas se ainda não existirem, preservando edições do usuário
+            if not os.path.exists(filepath):
+                with open(filepath, "w", encoding="utf-8") as f:
+                    json.dump(prof, f, indent=4, ensure_ascii=False)
 
     def list_profiles(self) -> List[Dict[str, Any]]:
         profiles = []
@@ -1500,7 +1511,7 @@ class ProfileManager:
         return profiles
 
     def get_profile(self, profile_id: str) -> Optional[Dict[str, Any]]:
-        path = os.path.join(PROFILES_DIR, f"{profile_id}.json")
+        path = self._profile_path(profile_id)
         if os.path.exists(path):
             try:
                 with open(path, "r", encoding="utf-8") as f:
@@ -1510,9 +1521,10 @@ class ProfileManager:
         return None
 
     def save_profile(self, profile: Dict[str, Any]) -> bool:
-        profile_id = profile.get("id") or profile.get("name", "perfil").lower().replace(" ", "_")
+        raw_id = profile.get("id") or profile.get("name", "perfil").lower().replace(" ", "_")
+        profile_id = self._sanitize_id(raw_id)
         profile["id"] = profile_id
-        path = os.path.join(PROFILES_DIR, f"{profile_id}.json")
+        path = self._profile_path(profile_id)
         try:
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(profile, f, indent=4, ensure_ascii=False)
@@ -1522,9 +1534,10 @@ class ProfileManager:
             return False
 
     def delete_profile(self, profile_id: str) -> bool:
-        if profile_id == "padrao":
+        safe_id = self._sanitize_id(profile_id)
+        if safe_id in ("padrao", "default_w270"):
             return False
-        path = os.path.join(PROFILES_DIR, f"{profile_id}.json")
+        path = self._profile_path(safe_id)
         if os.path.exists(path):
             try:
                 os.remove(path)
@@ -1534,7 +1547,7 @@ class ProfileManager:
         return False
 
     def export_profile(self, profile_id: str, dest_path: str) -> bool:
-        src = os.path.join(PROFILES_DIR, f"{profile_id}.json")
+        src = self._profile_path(profile_id)
         if os.path.exists(src):
             try:
                 shutil.copyfile(src, dest_path)

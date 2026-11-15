@@ -6,6 +6,7 @@ dos pedais (acelerador, freio, embreagem) com zonas mortas personalizáveis.
 
 import os
 import json
+import threading
 from typing import Dict, Any, Tuple
 
 CALIBRATION_FILE = os.path.join(os.path.dirname(__file__), "calibration.json")
@@ -42,7 +43,20 @@ DEFAULT_CALIBRATION: Dict[str, Any] = {
 
 class CalibrationManager:
     def __init__(self):
+        self._lock = threading.Lock()
         self.data: Dict[str, Any] = self.load()
+
+    def _merge_defaults(self, loaded: Dict[str, Any]) -> Dict[str, Any]:
+        """Mescla dados carregados com o esquema padrão para evitar chaves ausentes."""
+        res = json.loads(json.dumps(DEFAULT_CALIBRATION))
+        if isinstance(loaded, dict):
+            if isinstance(loaded.get("wheel"), dict):
+                res["wheel"].update(loaded["wheel"])
+            if isinstance(loaded.get("pedals"), dict):
+                for p in ["acc", "brake", "clutch"]:
+                    if isinstance(loaded["pedals"].get(p), dict):
+                        res["pedals"][p].update(loaded["pedals"][p])
+        return res
 
     def load(self) -> Dict[str, Any]:
         """Carrega calibração persistente do arquivo calibration.json."""
@@ -50,15 +64,7 @@ class CalibrationManager:
             try:
                 with open(CALIBRATION_FILE, "r", encoding="utf-8") as f:
                     loaded = json.load(f)
-                    # Merge seguro com os padrões
-                    res = json.loads(json.dumps(DEFAULT_CALIBRATION))
-                    if "wheel" in loaded:
-                        res["wheel"].update(loaded["wheel"])
-                    if "pedals" in loaded:
-                        for p in ["acc", "brake", "clutch"]:
-                            if p in loaded["pedals"]:
-                                res["pedals"][p].update(loaded["pedals"][p])
-                    return res
+                    return self._merge_defaults(loaded)
             except Exception as e:
                 print(f"[Calibração] Erro ao carregar {CALIBRATION_FILE}: {e}")
         return json.loads(json.dumps(DEFAULT_CALIBRATION))
@@ -66,9 +72,10 @@ class CalibrationManager:
     def save(self, data: Dict[str, Any]) -> bool:
         """Salva a calibração atual no disco."""
         try:
-            self.data = data
-            with open(CALIBRATION_FILE, "w", encoding="utf-8") as f:
-                json.dump(self.data, f, indent=2, ensure_ascii=False)
+            with self._lock:
+                self.data = self._merge_defaults(data)
+                with open(CALIBRATION_FILE, "w", encoding="utf-8") as f:
+                    json.dump(self.data, f, indent=2, ensure_ascii=False)
             return True
         except Exception as e:
             print(f"[Calibração] Erro ao salvar: {e}")
@@ -107,11 +114,23 @@ class CalibrationManager:
         return self.data
 
     def apply_wheel(self, raw_axis: float) -> float:
-        """Aplica o offset de centro e zona morta ao eixo do volante."""
-        offset = self.data["wheel"].get("center_offset", 0.0)
-        deadzone = self.data["wheel"].get("deadzone_percent", 0.0) / 100.0
+        """Aplica o offset de centro, limites físicos e zona morta ao eixo do volante."""
+        with self._lock:
+            wheel_cfg = dict(self.data["wheel"])
 
-        calibrated = raw_axis - offset
+        offset = wheel_cfg.get("center_offset", 0.0)
+        min_raw = wheel_cfg.get("min_raw", -1.0)
+        max_raw = wheel_cfg.get("max_raw", 1.0)
+        deadzone = wheel_cfg.get("deadzone_percent", 0.0) / 100.0
+
+        if raw_axis >= offset:
+            span = max(0.001, max_raw - offset)
+            calibrated = (raw_axis - offset) / span
+        else:
+            span = max(0.001, offset - min_raw)
+            calibrated = (raw_axis - offset) / span
+
+        calibrated = max(-1.0, min(1.0, calibrated))
 
         if abs(calibrated) <= deadzone:
             return 0.0
@@ -129,7 +148,9 @@ class CalibrationManager:
         Normaliza e calibra o valor do pedal para 0.0% a 100.0%.
         Aplica compensação de repouso, fim de curso e zonas mortas anti-arrasto.
         """
-        cfg = self.data["pedals"].get(pedal_name)
+        with self._lock:
+            cfg = dict(self.data["pedals"].get(pedal_name) or {})
+
         if not cfg:
             # Fallback padrão se não configurado: [-1.0, 1.0] com repouso em 1.0
             return max(0.0, min(100.0, (1.0 - raw_axis) * 50.0))
@@ -141,7 +162,7 @@ class CalibrationManager:
 
         diff = max_raw - min_raw
         if abs(diff) < 0.001:
-            diff = -2.0  # Evita divisão por zero
+            return 0.0
 
         # Razão linear 0.0 a 1.0
         ratio = (raw_axis - min_raw) / diff

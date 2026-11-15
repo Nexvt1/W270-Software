@@ -33,7 +33,10 @@ class AppAPI:
         self._window = window
 
     def _on_usb_data(self, data):
-        self.latest_usb_data = data
+        if not data or data.get("source") != "usb":
+            self.latest_usb_data = {}
+        else:
+            self.latest_usb_data = data
 
     def get_connection_status(self):
         is_usb = self.usb.is_connected()
@@ -133,11 +136,28 @@ class AppAPI:
         return self.usb.calibration.reset()
 
     def set_wheel_center(self):
+        if not self.usb.is_connected() or "rawWheelAxis" not in self.latest_usb_data:
+            if self.ble.is_connected:
+                self.ble.calibrate_center(1)
+                self.ble.calibrate_center(2)
+                return {
+                    "success": True,
+                    "offset": self.usb.calibration.data["wheel"].get("center_offset", 0.0),
+                    "data": self.usb.calibration.data,
+                    "usb_connected": False
+                }
+            return {
+                "success": False,
+                "offset": self.usb.calibration.data["wheel"].get("center_offset", 0.0),
+                "data": self.usb.calibration.data,
+                "usb_connected": False
+            }
+
         raw = self.latest_usb_data.get("rawWheelAxis", 0.0)
         res = self.usb.calibration.set_wheel_center(raw)
         self.ble.calibrate_center(1)
         self.ble.calibrate_center(2)
-        return {"success": True, "offset": raw, "data": res}
+        return {"success": True, "offset": raw, "data": res, "usb_connected": True}
 
     def set_wheel_limits(self, min_raw: float, max_raw: float):
         return self.usb.calibration.set_wheel_limits(min_raw, max_raw)
@@ -213,14 +233,27 @@ def apply_pcyes_icon(window):
             LR_LOADFROMFILE = 0x00000010
             LR_DEFAULTSIZE = 0x00000040
 
-            h_icon = ctypes.windll.user32.LoadImageW(None, ico_path, IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE)
+            user32 = ctypes.windll.user32
+            user32.LoadImageW.restype = ctypes.c_void_p
+            user32.LoadImageW.argtypes = [
+                ctypes.c_void_p, ctypes.c_wchar_p, ctypes.c_uint,
+                ctypes.c_int, ctypes.c_int, ctypes.c_uint
+            ]
+            user32.FindWindowW.restype = ctypes.c_void_p
+            user32.FindWindowW.argtypes = [ctypes.c_wchar_p, ctypes.c_wchar_p]
+            user32.SendMessageW.restype = ctypes.c_ssize_t
+            user32.SendMessageW.argtypes = [
+                ctypes.c_void_p, ctypes.c_uint, ctypes.c_size_t, ctypes.c_void_p
+            ]
+
+            h_icon = user32.LoadImageW(None, ico_path, IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE)
             if h_icon:
-                hwnd = ctypes.windll.user32.FindWindowW(None, "PCYES W270 Control Center")
+                hwnd = user32.FindWindowW(None, "PCYES W270 Control Center")
                 if hwnd:
-                    ctypes.windll.user32.SendMessageW(hwnd, WM_SETICON, 0, h_icon) # small
-                    ctypes.windll.user32.SendMessageW(hwnd, WM_SETICON, 1, h_icon) # big
+                    user32.SendMessageW(hwnd, WM_SETICON, 0, h_icon)  # small
+                    user32.SendMessageW(hwnd, WM_SETICON, 1, h_icon)  # big
     except Exception as e:
-        pass
+        print(f"[UI] Erro ao aplicar ícone: {e}")
 
 
 def main():

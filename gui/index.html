@@ -25,9 +25,9 @@
       </div>
 
       <!-- Widget de Temperatura do Motor no Topo -->
-      <div class="torque-badge" id="headerTempBadge" style="border-color:#2a3344; cursor:pointer;" onclick="triggerThermalAlert(64)" title="Sensor térmico dos motores do W270 (Clique para testar alerta)">
+      <div class="torque-badge" id="headerTempBadge" style="border-color:#2a3344;" title="Sensor térmico dos motores do W270">
         <svg viewBox="0 0 24 24" style="fill:#00e676; width:14px; height:14px;"><path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0zm-3 7a3 3 0 0 1-1.75-5.43V5a1.75 1.75 0 0 1 3.5 0v9.57A3 3 0 0 1 12 20z"/></svg>
-        <span id="headerTemp" style="color:#00e676;">35°C</span>
+        <span id="headerTemp" style="color:#00e676;">23.0°C</span>
         <span class="torque-max" id="headerTempStatus">/ Normal</span>
       </div>
 
@@ -139,12 +139,12 @@
               </div>
             </div>
 
-            <div class="preset-pills">
-              <span class="pill" onclick="setAnglePreset(270)">270° (Kart / Arcade)</span>
-              <span class="pill" onclick="setAnglePreset(360)">360° (F1 Monoposto)</span>
-              <span class="pill" onclick="setAnglePreset(540)">540° (Rally / WRC)</span>
-              <span class="pill active" id="pill900" onclick="setAnglePreset(900)">900° (GT / Pista)</span>
-              <span class="pill" onclick="setAnglePreset(1080)">1080° (Caminhões / ETS2)</span>
+            <div class="preset-pills" id="anglePresets">
+              <span class="pill" data-angle="270" onclick="setAnglePreset(270)">270° (Kart / Arcade)</span>
+              <span class="pill" data-angle="360" onclick="setAnglePreset(360)">360° (F1 Monoposto)</span>
+              <span class="pill" data-angle="540" onclick="setAnglePreset(540)">540° (Rally / WRC)</span>
+              <span class="pill active" id="pill900" data-angle="900" onclick="setAnglePreset(900)">900° (GT / Pista)</span>
+              <span class="pill" data-angle="1080" onclick="setAnglePreset(1080)">1080° (Caminhões / ETS2)</span>
             </div>
           </div>
 
@@ -191,12 +191,12 @@
               </div>
             </div>
 
-            <div class="preset-pills">
-              <span class="pill" onclick="setFfbPreset(25)">0.8 Nm (25%)</span>
-              <span class="pill" onclick="setFfbPreset(50)">1.6 Nm (50%)</span>
-              <span class="pill active" id="pillFfb70" onclick="setFfbPreset(70)">2.24 Nm (70% Padrão)</span>
-              <span class="pill" onclick="setFfbPreset(80)">2.56 Nm (80% Sim)</span>
-              <span class="pill" onclick="setFfbPreset(100)">3.2 Nm (100% Max)</span>
+            <div class="preset-pills" id="ffbPresets">
+              <span class="pill" data-ffb="25" onclick="setFfbPreset(25)">0.8 Nm (25%)</span>
+              <span class="pill" data-ffb="50" onclick="setFfbPreset(50)">1.6 Nm (50%)</span>
+              <span class="pill active" id="pillFfb70" data-ffb="70" onclick="setFfbPreset(70)">2.24 Nm (70% Padrão)</span>
+              <span class="pill" data-ffb="80" onclick="setFfbPreset(80)">2.56 Nm (80% Sim)</span>
+              <span class="pill" data-ffb="100" onclick="setFfbPreset(100)">3.2 Nm (100% Max)</span>
             </div>
 
             <div class="switch-group" style="margin-top:14px;">
@@ -292,11 +292,11 @@
               </svg>
             </div>
 
-            <div class="preset-pills">
-              <span class="pill active" onclick="applyPedalPreset('linear')">Linear 1:1</span>
-              <span class="pill" onclick="applyPedalPreset('compete')">Competição (Início Suave)</span>
-              <span class="pill" onclick="applyPedalPreset('comfort')">Conforto (Gradual)</span>
-              <span class="pill" onclick="applyPedalPreset('aggressive')">Agressivo (Arrancada)</span>
+            <div class="preset-pills" id="pedalPresets">
+              <span class="pill active" data-preset="linear" onclick="applyPedalPreset('linear')">Linear 1:1</span>
+              <span class="pill" data-preset="compete" onclick="applyPedalPreset('compete')">Competição (Início Suave)</span>
+              <span class="pill" data-preset="comfort" onclick="applyPedalPreset('comfort')">Conforto (Gradual)</span>
+              <span class="pill" data-preset="aggressive" onclick="applyPedalPreset('aggressive')">Agressivo (Arrancada)</span>
             </div>
           </div>
 
@@ -501,12 +501,12 @@
               </div>
 
               <!-- Medidor de Temperatura do Motor W270 em Tempo Real -->
-              <div style="background:#090b10; border:1px solid var(--border-subtle); border-radius:10px; padding:10px 14px; text-align:center; min-width:115px; cursor:pointer;" onclick="triggerThermalAlert(64)" title="Sensor térmico dos motores de Force Feedback (Clique para testar alerta)">
+              <div style="background:#090b10; border:1px solid var(--border-subtle); border-radius:10px; padding:10px 14px; text-align:center; min-width:115px;" title="Sensor térmico dos motores de Force Feedback">
                 <div style="font-size:10px; font-weight:800; color:var(--text-dim); text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:4px;">
                   <svg viewBox="0 0 24 24" style="width:12px; height:12px; fill:#00e676;" id="liveTempIcon"><path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0zm-3 7a3 3 0 0 1-1.75-5.43V5a1.75 1.75 0 0 1 3.5 0v9.57A3 3 0 0 1 12 20z"/></svg>
                   Temperatura
                 </div>
-                <div style="font-size:22px; font-weight:900; font-family:monospace; color:#00e676;" id="liveTempNm">35°C</div>
+                <div style="font-size:22px; font-weight:900; font-family:monospace; color:#00e676;" id="liveTempNm">23.0°C</div>
                 <div style="font-size:9.5px; color:var(--text-muted);" id="liveTempStatus">Motor Normal</div>
               </div>
             </div>
@@ -611,7 +611,7 @@
                   <span>Folga Inicial:</span>
                   <span id="calibClutchDzLow">2.0%</span>
                 </div>
-                <input type="range" class="mini-slider" min="0" max="10" step="0.5" value="2.0" oninput="updatePedalDz('clutch', 'low', this.value)">
+                <input type="range" id="sliderClutchDzLow" class="mini-slider" min="0" max="10" step="0.5" value="2.0" oninput="updatePedalDz('clutch', 'low', this.value)">
               </div>
 
               <!-- Freio -->
@@ -631,7 +631,7 @@
                   <span>Folga Inicial:</span>
                   <span id="calibBrakeDzLow">2.0%</span>
                 </div>
-                <input type="range" class="mini-slider" min="0" max="10" step="0.5" value="2.0" oninput="updatePedalDz('brake', 'low', this.value)">
+                <input type="range" id="sliderBrakeDzLow" class="mini-slider" min="0" max="10" step="0.5" value="2.0" oninput="updatePedalDz('brake', 'low', this.value)">
               </div>
 
               <!-- Acelerador -->
@@ -651,7 +651,7 @@
                   <span>Folga Inicial:</span>
                   <span id="calibAccDzLow">1.5%</span>
                 </div>
-                <input type="range" class="mini-slider" min="0" max="10" step="0.5" value="1.5" oninput="updatePedalDz('acc', 'low', this.value)">
+                <input type="range" id="sliderAccDzLow" class="mini-slider" min="0" max="10" step="0.5" value="1.5" oninput="updatePedalDz('acc', 'low', this.value)">
               </div>
 
             </div>
@@ -751,6 +751,30 @@
         <button class="btn btn-secondary" onclick="dismissThermalAlert()">
           Continuar Assim Mesmo (Dispensar)
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Criar Perfil de Jogo -->
+  <div id="createProfileModal" class="modal-overlay">
+    <div class="modal-card" style="max-width:440px; width:90%; background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:12px; padding:20px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h3 style="margin:0; font-size:16px; color:#fff;">Criar Novo Perfil de Jogo</h3>
+        <button class="modal-close-btn" onclick="closeCreateProfileModal()">&times;</button>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Nome do Jogo / Simulador</label>
+          <input type="text" id="newProfileName" placeholder="Ex: Assetto Corsa EVO" style="width:100%; padding:8px 10px; background:#090b10; color:#fff; border:1px solid var(--border-subtle); border-radius:6px; outline:none; box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px;">Categoria</label>
+          <input type="text" id="newProfileCategory" value="Simulação" placeholder="Ex: Drift, GT3, Rally" style="width:100%; padding:8px 10px; background:#090b10; color:#fff; border:1px solid var(--border-subtle); border-radius:6px; outline:none; box-sizing:border-box;">
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
+          <button class="btn" onclick="closeCreateProfileModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="submitCreateProfile()">Salvar Perfil</button>
+        </div>
       </div>
     </div>
   </div>
