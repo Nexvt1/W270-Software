@@ -1,0 +1,76 @@
+{
+    "id": "cms_2018",
+    "name": "Car Mechanic Simulator 2018",
+    "game": "Car Mechanic Simulator 2018",
+    "category": "Oficina & Pista de Testes",
+    "mode_required": "X-Input ou D-Input",
+    "description": "Configuração rápida para testar os veículos montados na pista de testes e aceleração.",
+    "angle": 900,
+    "ffb": 60,
+    "ffbReverse": false,
+    "spring": 70,
+    "damping": 60,
+    "friction": 60,
+    "inertia": 65,
+    "roadSensitivity": 50,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "DICA: O CMS 2018 reconhece nativamente controles no modo X-Input.",
+        "Alterne o botão 'Modo' no cabeçalho do app para 'PC: X-Input' (LED Azul no volante).",
+        "Na Pista de Teste: O volante responderá imediatamente na direção e os pedais no acelerador/freio."
+    ],
+    "keymap": {}
+}

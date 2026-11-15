@@ -1,0 +1,77 @@
+{
+    "id": "the_crew_2",
+    "name": "The Crew 2",
+    "game": "The Crew 2",
+    "category": "Mundo Aberto EUA / Arcade",
+    "mode_required": "D-Input ou X-Input",
+    "description": "Resposta dinâmica e rápida a 540° para carros de rua, hipercarros e off-road.",
+    "angle": 540,
+    "ffb": 70,
+    "ffbReverse": false,
+    "spring": 50,
+    "damping": 40,
+    "friction": 45,
+    "inertia": 45,
+    "roadSensitivity": 65,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            30
+        ],
+        [
+            65,
+            70
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            25
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Opções ➔ Controles ➔ Volante: Selecione Dispositivo Personalizado.",
+        "Linearidade da Direção: 50% (Linear 1:1) | Zona Morta: 0%.",
+        "Fixação de Ângulo: 540° | Força de Force Feedback: 70%.",
+        "Use as Borboletas (Paddle Shifters) para trocas instantâneas em corridas de alta velocidade."
+    ],
+    "keymap": {}
+}

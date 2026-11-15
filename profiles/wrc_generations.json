@@ -1,0 +1,77 @@
+{
+    "id": "wrc_generations",
+    "name": "WRC Generations",
+    "game": "WRC Generations",
+    "category": "Rally Híbrido Rally1",
+    "mode_required": "D-Input",
+    "description": "Sensibilidade de torque de tração integral e resposta de esterço para carros híbridos Rally1.",
+    "angle": 540,
+    "ffb": 80,
+    "ffbReverse": false,
+    "spring": 40,
+    "damping": 50,
+    "friction": 65,
+    "inertia": 60,
+    "roadSensitivity": 85,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            30
+        ],
+        [
+            60,
+            75
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            20,
+            20
+        ],
+        [
+            55,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Opções ➔ Jogabilidade ➔ Controles: Detectar Volante.",
+        "Torque de Autoalinhamento (SAT): 80% | Suspensão: 60% | Deslizamento de Pneu: 55%.",
+        "Limite Físico: 540° | Zonas mortas: 0%.",
+        "Mapeie o Freio de Mão no botão 25 do câmbio para curvas fechadas em cotovelo (Hairpin)."
+    ],
+    "keymap": {}
+}

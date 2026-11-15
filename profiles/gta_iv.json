@@ -1,0 +1,76 @@
+{
+    "id": "gta_iv",
+    "name": "Grand Theft Auto IV (GTA IV)",
+    "game": "Grand Theft Auto IV",
+    "category": "Física Pesada Clássica",
+    "mode_required": "D-Input (com plugin) ou X-Input",
+    "description": "Aproveita a clássica física de suspensão pesada e rolagem de carroceria de Liberty City.",
+    "angle": 900,
+    "ffb": 65,
+    "ffbReverse": false,
+    "spring": 65,
+    "damping": 60,
+    "friction": 65,
+    "inertia": 70,
+    "roadSensitivity": 50,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            70
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            20
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Para suporte a volante e câmbio no GTA IV: Utilize o plugin 'Zolika1351 Steering Wheel Support'.",
+        "O plugin adiciona leitura nativa DirectInput do W270 e suporte aos pedais Hall.",
+        "A física de suspensão do GTA IV se torna incrivelmente realista quando pilotada no volante a 900°!"
+    ],
+    "keymap": {}
+}

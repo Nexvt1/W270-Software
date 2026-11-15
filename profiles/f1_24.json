@@ -1,0 +1,77 @@
+{
+    "id": "f1_24",
+    "name": "F1 23 & F1 24",
+    "game": "EA SPORTS F1 23 / F1 24",
+    "category": "Fórmula 1 Monoposto",
+    "mode_required": "D-Input",
+    "description": "Giro curto de 360° para curvas fechadas em circuitos como Mônaco sem tirar as mãos.",
+    "angle": 360,
+    "ffb": 80,
+    "ffbReverse": false,
+    "spring": 30,
+    "damping": 25,
+    "friction": 25,
+    "inertia": 25,
+    "roadSensitivity": 85,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            70,
+            75
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            15,
+            20
+        ],
+        [
+            60,
+            75
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "No F1: Acesse Configurações de Controle ➔ Calibração.",
+        "Ângulo de Rotação Máxima da Direção = 360°.",
+        "Zona Morta da Direção = 0, Linearidade da Direção = 0.",
+        "Em Force Feedback: Força do Efeito = 75%, Efeitos de Pista = 35%, Efeitos de Zebra = 40%, Amortecedor = 15%."
+    ],
+    "keymap": {}
+}

@@ -1,0 +1,77 @@
+{
+    "id": "forza_horizon",
+    "name": "Forza Horizon (FH5 / FH6)",
+    "game": "Forza Horizon",
+    "category": "Mundo Aberto / Arcade-Sim",
+    "mode_required": "D-Input (Perfil Personalizado)",
+    "description": "Corrige o problema de direção dura e falta de contraesterço em drift e corridas.",
+    "angle": 540,
+    "ffb": 70,
+    "ffbReverse": true,
+    "spring": 45,
+    "damping": 35,
+    "friction": 40,
+    "inertia": 40,
+    "roadSensitivity": 70,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            70
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            20
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "No menu do Forza: Configurações de Controle ➔ Roda ➔ 'Perfil Personalizado 1'.",
+        "Mapeie manualmente: Esterçar Esquerda/Direita, Acelerador, Freio e Embreagem.",
+        "Em 'Controles Avançados': Escala de FFB = 75, Força de Alinhamento = 80, Trilha Mecânica = 65, Amortecimento Central = 25.",
+        "Todas as Zonas Mortas Internas = 0, Zonas Mortas Externas = 100."
+    ],
+    "keymap": {}
+}

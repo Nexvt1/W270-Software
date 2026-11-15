@@ -1,0 +1,78 @@
+{
+    "id": "beamng_drive",
+    "name": "BeamNG.drive (Física Real)",
+    "game": "BeamNG.drive",
+    "category": "Simulador de Física & Deformação",
+    "mode_required": "D-Input",
+    "description": "Otimizado para a física de deformação de chassi em tempo real do BeamNG a 1000 Hz.",
+    "angle": 900,
+    "ffb": 80,
+    "ffbReverse": false,
+    "spring": 25,
+    "damping": 40,
+    "friction": 35,
+    "inertia": 45,
+    "roadSensitivity": 90,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            20
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            20,
+            15
+        ],
+        [
+            55,
+            60
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "No BeamNG: Opções ➔ Controles ➔ Hardware ➔ 'PCYES W270'.",
+        "Em 'Force Feedback': Marque 'Habilitar FFB' e vincule ao Eixo do Volante.",
+        "Força de FFB: 280 a 320 (escala ideal para os 3.2 Nm) | Taxa de Atualização: 1000 Hz.",
+        "Suavização: 150 (elimina oscilações indesejadas em retas sem perder sensibilidade de terreno).",
+        "Se o volante puxar sozinho ao esterçar, clique em 'Inverter FFB'."
+    ],
+    "keymap": {}
+}

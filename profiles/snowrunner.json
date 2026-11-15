@@ -1,0 +1,76 @@
+{
+    "id": "snowrunner",
+    "name": "SnowRunner & MudRunner",
+    "game": "SnowRunner / Expeditions",
+    "category": "Off-Road Pesado",
+    "mode_required": "D-Input",
+    "description": "Amortecimento reforçado para simular terreno pesado de lama, atoleiros e neve.",
+    "angle": 900,
+    "ffb": 85,
+    "ffbReverse": false,
+    "spring": 55,
+    "damping": 85,
+    "friction": 80,
+    "inertia": 80,
+    "roadSensitivity": 60,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            35,
+            30
+        ],
+        [
+            70,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "No SnowRunner: Configurações ➔ Volante ➔ Tipo de Volante: 'DirectInput'.",
+        "Mapeie os eixos manualmente em 'Configurar Controles'.",
+        "Ganho de FFB = 80%, Fricção do Terreno = 75%, Força de Centralização = 50%."
+    ],
+    "keymap": {}
+}

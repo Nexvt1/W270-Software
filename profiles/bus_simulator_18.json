@@ -1,0 +1,77 @@
+{
+    "id": "bus_simulator_18",
+    "name": "Bus Simulator 18",
+    "game": "Bus Simulator 18",
+    "category": "Simulador de Ônibus Urbano",
+    "mode_required": "D-Input",
+    "description": "Ângulo máximo de 1080° com volante pesado simulando a coluna de direção de ônibus.",
+    "angle": 1080,
+    "ffb": 65,
+    "ffbReverse": false,
+    "spring": 70,
+    "damping": 75,
+    "friction": 70,
+    "inertia": 85,
+    "roadSensitivity": 40,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            35,
+            30
+        ],
+        [
+            70,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Configurações ➔ Jogabilidade ➔ Dispositivo de Entrada: Volante.",
+        "Graus de Rotação: 1080° | Sensibilidade de Direção: 1.0 (Linear) | Zona Morta: 0%.",
+        "Mapeie as Borboletas (Paddles) para abrir/fechar portas dianteiras e traseiras dos passageiros.",
+        "Use o D-Pad para olhar nos espelhos retrovisores e bilhetagem."
+    ],
+    "keymap": {}
+}

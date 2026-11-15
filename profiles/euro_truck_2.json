@@ -1,0 +1,78 @@
+{
+    "id": "euro_truck_2",
+    "name": "Euro Truck Simulator 2",
+    "game": "Euro Truck Simulator 2",
+    "category": "Simulador de Caminhão & Cargas",
+    "mode_required": "D-Input",
+    "description": "Rotação total a 1080°, suporte a divisor de caixa alta/baixa e peso hidráulico de direção.",
+    "angle": 1080,
+    "ffb": 60,
+    "ffbReverse": false,
+    "spring": 70,
+    "damping": 75,
+    "friction": 65,
+    "inertia": 85,
+    "roadSensitivity": 35,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            40,
+            30
+        ],
+        [
+            70,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Assistente de Entrada: Selecione 'Volante' ➔ 'Câmbio em H'.",
+        "Layout do Câmbio: Escolha 'Range' ou 'Splitter' (para marchas de 1 a 12 ou 18).",
+        "Mapeie o botão lateral do câmbio W270 (botão 26) como 'Divisor de Marchas 1'.",
+        "Sensibilidade da Direção = 100% (Linear) | Não Linearidade = 0%.",
+        "Centragem em Alta Velocidade = 65% | Atrito da Superfície = 75%."
+    ],
+    "keymap": {}
+}

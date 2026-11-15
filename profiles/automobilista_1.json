@@ -1,0 +1,77 @@
+{
+    "id": "automobilista_1",
+    "name": "Automobilista (AMS 1)",
+    "game": "Automobilista",
+    "category": "Simulador Clássico Brasileiro",
+    "mode_required": "D-Input",
+    "description": "Física do motor rFactor 1 com FFB invertido necessário para o torque correto.",
+    "angle": 900,
+    "ffb": 75,
+    "ffbReverse": true,
+    "spring": 10,
+    "damping": 40,
+    "friction": 45,
+    "inertia": 50,
+    "roadSensitivity": 80,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            70
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            20
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Configurações ➔ Controles ➔ Volante Personalizado.",
+        "Força de FFB: Configure valor NEGATIVO (ex: -75%) se não usar o botão Inverter FFB do app.",
+        "Tipo de Efeitos: RealFeel Puro | Suavização: 0 a 2.",
+        "Mapeie o Câmbio em H para as categorias de Stock Car antigas e Copa Classic."
+    ],
+    "keymap": {}
+}

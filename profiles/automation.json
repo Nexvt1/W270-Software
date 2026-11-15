@@ -1,0 +1,76 @@
+{
+    "id": "automation",
+    "name": "Automation - Car Company Tycoon",
+    "game": "Automation",
+    "category": "Criação de Carros & Pista de Teste",
+    "mode_required": "D-Input ou X-Input",
+    "description": "Permite testar na pista interna e exportar modelos direto para pilotar no BeamNG.drive.",
+    "angle": 900,
+    "ffb": 70,
+    "ffbReverse": false,
+    "spring": 50,
+    "damping": 55,
+    "friction": 60,
+    "inertia": 60,
+    "roadSensitivity": 70,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Nas opções de Controle do Automation: Selecione 'DirectInput Joystick/Wheel'.",
+        "Vincule os eixos de direção, acelerador e freio para os testes no Airfield.",
+        "DICA DE OURO: Use o botão 'Export to BeamNG.drive' no menu do Automation para pilotar seus veículos criados com física completa de destruição e FFB a 60 FPS!"
+    ],
+    "keymap": {}
+}

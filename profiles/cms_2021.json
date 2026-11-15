@@ -1,0 +1,76 @@
+{
+    "id": "cms_2021",
+    "name": "Car Mechanic Simulator 2021",
+    "game": "Car Mechanic Simulator 2021",
+    "category": "Oficina, Dinamômetro & Pista",
+    "mode_required": "X-Input ou D-Input",
+    "description": "Suporte aprimorado para teste de suspensão, alinhamento e voltas rápidas no circuito.",
+    "angle": 900,
+    "ffb": 65,
+    "ffbReverse": false,
+    "spring": 65,
+    "damping": 60,
+    "friction": 60,
+    "inertia": 65,
+    "roadSensitivity": 55,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            70
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            20
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Configurações ➔ Controles ➔ Direção: Conecte o volante e mapeie os eixos.",
+        "Sensibilidade: 100% | Zonas Mortas: 0%.",
+        "Ao testar carros no circuito fechado, o volante oferece centralização e peso progressivo."
+    ],
+    "keymap": {}
+}

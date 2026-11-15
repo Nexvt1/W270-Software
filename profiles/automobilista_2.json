@@ -1,0 +1,77 @@
+{
+    "id": "automobilista_2",
+    "name": "Automobilista 2 (AMS 2)",
+    "game": "Automobilista 2",
+    "category": "Simulador Nacional / Stock Car",
+    "mode_required": "D-Input",
+    "description": "Ajuste fino para Stock Car Pro Series, Copa Truck, Fórmula 1 e GT3 no Madness Engine.",
+    "angle": 900,
+    "ffb": 80,
+    "ffbReverse": false,
+    "spring": 20,
+    "damping": 35,
+    "friction": 40,
+    "inertia": 40,
+    "roadSensitivity": 80,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            70
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            20,
+            20
+        ],
+        [
+            55,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Opções ➔ Controles: Tipo = 'Personalizado' (Custom Wheel).",
+        "Execute a 'Calibração do Volante' (gire tudo até 900° e volte a 90°).",
+        "Perfil de FFB: 'Default+' | Ganho: 75% | Low Force Boost (LFB): 10 | FX: 40 | Damping: 25.",
+        "Para Copa Truck: Aumente o ângulo do W270 para 1080° para simulação fiel do caminhão."
+    ],
+    "keymap": {}
+}

@@ -1,0 +1,77 @@
+{
+    "id": "assetto_corsa_competizione",
+    "name": "Assetto Corsa Competizione",
+    "game": "Assetto Corsa Competizione (ACC)",
+    "category": "Simulador GT3 / GT4 Oficial",
+    "mode_required": "D-Input",
+    "description": "Configuração refinada para o motor de física ACC com telemetria direta de suspensão.",
+    "angle": 900,
+    "ffb": 75,
+    "ffbReverse": false,
+    "spring": 0,
+    "damping": 40,
+    "friction": 50,
+    "inertia": 50,
+    "roadSensitivity": 85,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            20
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            20,
+            15
+        ],
+        [
+            50,
+            60
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Opções ➔ Controles ➔ Tipo de Dispositivo: Volante Personalizado.",
+        "Ganho (Gain): 70% a 75% | Força Mínima: 0% | Dynamic Damping: 100%.",
+        "Efeitos de Estrada (Road Effects): 20% a 25%.",
+        "Trava de Direção (Steer Lock): 900° (o ACC adapta automaticamente para cada carro GT3)."
+    ],
+    "keymap": {}
+}

@@ -1,0 +1,76 @@
+{
+    "id": "padrao",
+    "name": "Padrão de Fábrica PCYES W270",
+    "game": "Calibração Neutra (Geral)",
+    "category": "Geral",
+    "mode_required": "D-Input",
+    "description": "Configuração balanceada recomendada para uso diário e calibração de fábrica.",
+    "angle": 900,
+    "ffb": 70,
+    "ffbReverse": false,
+    "spring": 60,
+    "damping": 60,
+    "friction": 70,
+    "inertia": 70,
+    "roadSensitivity": 50,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Modo recomendado: PC DirectInput (LED indicador padrão).",
+        "Nos jogos, selecione 'Dispositivo Personalizado' ou 'Custom Wheel'.",
+        "Mantenha as zonas mortas em 0% no jogo para máxima precisão dos sensores Hall."
+    ],
+    "keymap": {}
+}

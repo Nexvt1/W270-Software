@@ -1,0 +1,76 @@
+{
+    "id": "dirt_rally_2",
+    "name": "Dirt Rally 2.0 & EA WRC",
+    "game": "Dirt Rally 2.0 / EA SPORTS WRC",
+    "category": "Rally / Todo Terreno",
+    "mode_required": "D-Input",
+    "description": "Contraesterço ágil a 540°, resposta imediata para saltos, poças de lama e cascalho.",
+    "angle": 540,
+    "ffb": 85,
+    "ffbReverse": false,
+    "spring": 35,
+    "damping": 30,
+    "friction": 35,
+    "inertia": 30,
+    "roadSensitivity": 95,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            25
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            20,
+            25
+        ],
+        [
+            50,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "No Dirt Rally: Calibre o volante a 540° ou ative 'Soft Lock' a 540°.",
+        "Saturação da Direção: 100%, Zona Morta: 0%, Linearidade: 0.",
+        "Torque / Alinhamento Automático: 75% a 80%, Atrito da Roda: 30%, Atrito do Pneu: 40%, Suspensão: 75%."
+    ],
+    "keymap": {}
+}

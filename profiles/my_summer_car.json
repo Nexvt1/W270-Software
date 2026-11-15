@@ -1,0 +1,78 @@
+{
+    "id": "my_summer_car",
+    "name": "My Summer Car",
+    "game": "My Summer Car",
+    "category": "Simulador Finlandês de Mecânica",
+    "mode_required": "D-Input",
+    "description": "Alinhamento fiel para pilotar a van, o trator e o Satsuma pelas estradas de terra.",
+    "angle": 900,
+    "ffb": 75,
+    "ffbReverse": false,
+    "spring": 50,
+    "damping": 50,
+    "friction": 60,
+    "inertia": 55,
+    "roadSensitivity": 80,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            70
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            20
+        ],
+        [
+            60,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            35,
+            25
+        ],
+        [
+            65,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Menu de Configurações ➔ Car Controls ➔ Ative 'Force Feedback'.",
+        "Mapeie o Volante no eixo Steering e marque 'Non-linear: 0%'.",
+        "Pedais: Se o carro acelerar sozinho, clique no botão 'Invert' no menu do jogo.",
+        "Câmbio: Mapeie as marchas do H-Shifter W270 (1 a 6 + Ré).",
+        "Dica: O Satsuma sem alinhamento nas rodas puxará o volante exatamente como um carro real!"
+    ],
+    "keymap": {}
+}

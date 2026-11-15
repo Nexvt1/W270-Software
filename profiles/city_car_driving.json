@@ -1,0 +1,77 @@
+{
+    "id": "city_car_driving",
+    "name": "City Car Driving (Autoescola)",
+    "game": "City Car Driving",
+    "category": "Simulador Urbano",
+    "mode_required": "D-Input",
+    "description": "Direção urbana realista a 1080°, controle de ponto de embreagem e seta no volante.",
+    "angle": 1080,
+    "ffb": 65,
+    "ffbReverse": false,
+    "spring": 65,
+    "damping": 60,
+    "friction": 55,
+    "inertia": 65,
+    "roadSensitivity": 40,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            35,
+            30
+        ],
+        [
+            70,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            30,
+            25
+        ],
+        [
+            65,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            40,
+            25
+        ],
+        [
+            65,
+            60
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "No menu Controles: selecione 'Volante'.",
+        "Mapeie o Eixo X para Direção, Eixo Y para Acelerador, Eixo Z para Freio e Rotação Z para Embreagem.",
+        "Ative 'Embreagem Manual' e 'Câmbio H' para treinamento realista de trânsito.",
+        "Use o D-Pad para olhar para os lados e os botões L1/R1 para acionar as setas de conversão."
+    ],
+    "keymap": {}
+}

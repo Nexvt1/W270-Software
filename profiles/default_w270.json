@@ -1,0 +1,75 @@
+{
+    "id": "default_w270",
+    "name": "Padrão de Fábrica PCYES W270",
+    "game": "Configuração Padrão W270",
+    "category": "Padrão de Fábrica",
+    "mode_required": "D-Input",
+    "description": "Configuração balanceada recomendada pela engenharia da PCYES para uso geral.",
+    "angle": 900,
+    "ffb": 70,
+    "ffbReverse": false,
+    "spring": 60,
+    "damping": 60,
+    "friction": 70,
+    "inertia": 70,
+    "roadSensitivity": 50,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Perfil padrão balanceado para qualquer novo jogo que você queira experimentar.",
+        "Caso sinta o volante muito pesado em manobras lentas, reduza a 'Fricção' ou 'Amortecimento'."
+    ],
+    "keymap": {}
+}

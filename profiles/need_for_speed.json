@@ -1,0 +1,77 @@
+{
+    "id": "need_for_speed",
+    "name": "Need for Speed (Unbound / Heat)",
+    "game": "Need for Speed Unbound / Heat / Payback",
+    "category": "Arcade / Corridas Clandestinas",
+    "mode_required": "X-Input",
+    "description": "Como o NFS não suporta volantes DirectInput genericamente, utiliza emulação X-Input nativa.",
+    "angle": 360,
+    "ffb": 60,
+    "ffbReverse": false,
+    "spring": 50,
+    "damping": 45,
+    "friction": 45,
+    "inertia": 40,
+    "roadSensitivity": 50,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "ATENÇÃO: A franquia Need for Speed no PC NÃO tem suporte nativo para volantes DirectInput genéricos.",
+        "SOLUÇÃO: Alterne o W270 para o 'Modo X-Input' pelo botão no topo do aplicativo.",
+        "No Modo X-Input, o jogo reconhecerá o volante como um controle oficial Xbox 360/One, funcionando perfeitamente em todas as corridas, menus e nitro!",
+        "Recomendamos ângulo de 360° a 540° para respostas rápidas de drift e curvas de alta velocidade."
+    ],
+    "keymap": {}
+}

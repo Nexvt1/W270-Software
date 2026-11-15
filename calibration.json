@@ -1,0 +1,28 @@
+{
+  "wheel": {
+    "center_offset": -0.0002,
+    "deadzone_percent": 0.0,
+    "min_raw": -1.0,
+    "max_raw": 1.0
+  },
+  "pedals": {
+    "acc": {
+      "min_raw": 1.0,
+      "max_raw": -1.0,
+      "deadzone_low": 1.5,
+      "deadzone_high": 2.0
+    },
+    "brake": {
+      "min_raw": 1.0,
+      "max_raw": -1.0,
+      "deadzone_low": 2.0,
+      "deadzone_high": 2.5
+    },
+    "clutch": {
+      "min_raw": 1.0,
+      "max_raw": -1.0,
+      "deadzone_low": 2.0,
+      "deadzone_high": 2.5
+    }
+  }
+}

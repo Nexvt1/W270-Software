@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none">
+  <!-- PCYES Red Geometric Accent Slash -->
+  <polygon points="175,4 270,4 250,20 155,20" fill="#e30613" />
+  
+  <!-- Text 'PC' in Bold Cyber White -->
+  <text x="10" y="50" font-family="'Segoe UI', -apple-system, Arial, sans-serif" font-size="48" font-weight="900" font-style="italic" letter-spacing="-1.5" fill="#ffffff">PC</text>
+  
+  <!-- Text 'YES' in Iconic PCYES Red -->
+  <text x="76" y="50" font-family="'Segoe UI', -apple-system, Arial, sans-serif" font-size="48" font-weight="900" font-style="italic" letter-spacing="-1.5" fill="#e30613" filter="drop-shadow(0px 0px 8px rgba(227,6,19,0.5))">YES</text>
+  
+  <!-- Sub-label W270 Badge -->
+  <rect x="175" y="28" width="95" height="22" rx="4" fill="#181d28" stroke="#e30613" stroke-width="1.5"/>
+  <text x="183" y="44" font-family="'Segoe UI', -apple-system, Arial, sans-serif" font-size="11" font-weight="800" letter-spacing="1" fill="#ffffff">W270 FFB</text>
+</svg>

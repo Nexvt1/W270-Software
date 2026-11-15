@@ -1,0 +1,77 @@
+{
+    "id": "wrc_10",
+    "name": "WRC 10 FIA World Rally",
+    "game": "WRC 10",
+    "category": "Rally Oficial FIA",
+    "mode_required": "D-Input",
+    "description": "Giro ágil de 540° com contraesterço agressivo para cascalho, neve e asfalto.",
+    "angle": 540,
+    "ffb": 80,
+    "ffbReverse": false,
+    "spring": 40,
+    "damping": 55,
+    "friction": 65,
+    "inertia": 60,
+    "roadSensitivity": 85,
+    "accChart": [
+        [
+            0,
+            0
+        ],
+        [
+            25,
+            30
+        ],
+        [
+            60,
+            75
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "brakeChart": [
+        [
+            0,
+            0
+        ],
+        [
+            20,
+            20
+        ],
+        [
+            55,
+            65
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "clutchChart": [
+        [
+            0,
+            0
+        ],
+        [
+            33,
+            33
+        ],
+        [
+            66,
+            66
+        ],
+        [
+            100,
+            100
+        ]
+    ],
+    "in_game_tips": [
+        "Opções ➔ Controles ➔ 'PCYES W270'.",
+        "Força Geral de FFB: 75% | Fricção de Pneu: 60% | Terreno/Solo: 65% | Colisão: 50%.",
+        "Bloqueio de Direção (Soft Lock): 540°.",
+        "Mapeie a chave do câmbio W270 (botão 25) para o Freio de Mão hidráulico de rally."
+    ],
+    "keymap": {}
+}
