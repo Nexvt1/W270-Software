@@ -13,7 +13,7 @@ O objetivo desta funcionalidade é padronizar todos os valores numéricos dos pe
   - Sliders de FFB, mola, amortecimento, fricção, inércia e pontos de pedal ajustados com `step="10"`.
   - Inclusão do botão de preset rápido de **400° (F1 2025/26)** na aba Volante.
   - Ajuste das pílulas de força de FFB para múltiplos de 10 (`20%`, `50%`, `70%`, `80%`, `100%`).
-  - Associação automática da arte de capa `gui/assets/games/f1_25_26.jpg`.
+  - Associação e enquadramento da arte de capa oficial do **EA SPORTS F1 25 / 2026 Season Pack** em `gui/assets/games/f1_25_26.jpg` (460x215 px).
 
 ## 3. Fluxo de Execução
 1. **Inicialização:** `ProfileManager` carrega e valida os 23 perfis garantindo persistência sem inconsistências decimais.
