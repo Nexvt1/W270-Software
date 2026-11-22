@@ -6,12 +6,12 @@
     "mode_required": "D-Input",
     "description": "Direção urbana realista a 1080°, controle de ponto de embreagem e seta no volante.",
     "angle": 1080,
-    "ffb": 65,
+    "ffb": 70,
     "ffbReverse": false,
-    "spring": 65,
+    "spring": 70,
     "damping": 60,
-    "friction": 55,
-    "inertia": 65,
+    "friction": 60,
+    "inertia": 70,
     "roadSensitivity": 40,
     "accChart": [
         [
@@ -19,12 +19,12 @@
             0
         ],
         [
-            35,
+            40,
             30
         ],
         [
             70,
-            65
+            70
         ],
         [
             100,
@@ -38,11 +38,11 @@
         ],
         [
             30,
-            25
+            30
         ],
         [
-            65,
-            65
+            70,
+            70
         ],
         [
             100,
@@ -56,10 +56,10 @@
         ],
         [
             40,
-            25
+            30
         ],
         [
-            65,
+            70,
             60
         ],
         [

@@ -6,10 +6,10 @@
     "mode_required": "D-Input",
     "description": "Amortecimento reforçado para simular terreno pesado de lama, atoleiros e neve.",
     "angle": 900,
-    "ffb": 85,
+    "ffb": 90,
     "ffbReverse": false,
-    "spring": 55,
-    "damping": 85,
+    "spring": 60,
+    "damping": 90,
     "friction": 80,
     "inertia": 80,
     "roadSensitivity": 60,
@@ -19,12 +19,12 @@
             0
         ],
         [
-            35,
+            40,
             30
         ],
         [
             70,
-            65
+            70
         ],
         [
             100,
@@ -37,12 +37,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,
@@ -70,7 +70,7 @@
     "in_game_tips": [
         "No SnowRunner: Configurações ➔ Volante ➔ Tipo de Volante: 'DirectInput'.",
         "Mapeie os eixos manualmente em 'Configurar Controles'.",
-        "Ganho de FFB = 80%, Fricção do Terreno = 75%, Força de Centralização = 50%."
+        "Ganho de FFB = 80%, Fricção do Terreno = 80%, Força de Centralização = 50%."
     ],
     "keymap": {}
 }

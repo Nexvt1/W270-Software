@@ -6,13 +6,13 @@
     "mode_required": "X-Input ou D-Input",
     "description": "Suporte aprimorado para teste de suspensão, alinhamento e voltas rápidas no circuito.",
     "angle": 900,
-    "ffb": 65,
+    "ffb": 70,
     "ffbReverse": false,
-    "spring": 65,
+    "spring": 70,
     "damping": 60,
     "friction": 60,
-    "inertia": 65,
-    "roadSensitivity": 55,
+    "inertia": 70,
+    "roadSensitivity": 60,
     "accChart": [
         [
             0,
@@ -20,10 +20,10 @@
         ],
         [
             30,
-            25
+            30
         ],
         [
-            65,
+            70,
             70
         ],
         [
@@ -37,12 +37,12 @@
             0
         ],
         [
-            25,
+            30,
             20
         ],
         [
             60,
-            65
+            70
         ],
         [
             100,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,

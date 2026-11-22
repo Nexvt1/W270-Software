@@ -20,167 +20,13 @@ DEFAULT_PROFILES = [
         "mode_required": "D-Input",
         "description": "Fidelidade máxima para sentir zebras, transferência de peso e limite de aderência.",
         "angle": 900,
-        "ffb": 75,
+        "ffb": 80,
         "ffbReverse": False,
         "spring": 0,
-        "damping": 45,
-        "friction": 55,
+        "damping": 50,
+        "friction": 60,
         "inertia": 50,
-        "roadSensitivity": 85,
-        "accChart": [
-            [
-                0,
-                0
-            ],
-            [
-                25,
-                20
-            ],
-            [
-                60,
-                65
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "brakeChart": [
-            [
-                0,
-                0
-            ],
-            [
-                20,
-                15
-            ],
-            [
-                50,
-                60
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "clutchChart": [
-            [
-                0,
-                0
-            ],
-            [
-                33,
-                33
-            ],
-            [
-                66,
-                66
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "in_game_tips": [
-            "No Content Manager ou menu do AC: Configurações ➔ Controles ➔ Volante (DirectInput).",
-            "Ganho Geral de FFB: 75% a 80% (ideal para os motores duplos de 3.2 Nm evitarem clipping).",
-            "Filtro: 0% | Força Mínima: 3% | Zebras: 35% | Efeitos de Pista: 30% | Derrapagem (Slip): 20%.",
-            "Efeito de Subesterço: DESATIVADO (garante alinhamento físico real e contraesterço veloz)."
-        ],
-        "keymap": {}
-    },
-    {
-        "id": "assetto_corsa_competizione",
-        "name": "Assetto Corsa Competizione",
-        "game": "Assetto Corsa Competizione (ACC)",
-        "category": "Simulador GT3 / GT4 Oficial",
-        "mode_required": "D-Input",
-        "description": "Configuração refinada para o motor de física ACC com telemetria direta de suspensão.",
-        "angle": 900,
-        "ffb": 75,
-        "ffbReverse": False,
-        "spring": 0,
-        "damping": 40,
-        "friction": 50,
-        "inertia": 50,
-        "roadSensitivity": 85,
-        "accChart": [
-            [
-                0,
-                0
-            ],
-            [
-                25,
-                20
-            ],
-            [
-                60,
-                65
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "brakeChart": [
-            [
-                0,
-                0
-            ],
-            [
-                20,
-                15
-            ],
-            [
-                50,
-                60
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "clutchChart": [
-            [
-                0,
-                0
-            ],
-            [
-                33,
-                33
-            ],
-            [
-                66,
-                66
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "in_game_tips": [
-            "Opções ➔ Controles ➔ Tipo de Dispositivo: Volante Personalizado.",
-            "Ganho (Gain): 70% a 75% | Força Mínima: 0% | Dynamic Damping: 100%.",
-            "Efeitos de Estrada (Road Effects): 20% a 25%.",
-            "Trava de Direção (Steer Lock): 900° (o ACC adapta automaticamente para cada carro GT3)."
-        ],
-        "keymap": {}
-    },
-    {
-        "id": "automobilista_1",
-        "name": "Automobilista (AMS 1)",
-        "game": "Automobilista",
-        "category": "Simulador Clássico Brasileiro",
-        "mode_required": "D-Input",
-        "description": "Física do motor rFactor 1 com FFB invertido necessário para o torque correto.",
-        "angle": 900,
-        "ffb": 75,
-        "ffbReverse": True,
-        "spring": 10,
-        "damping": 40,
-        "friction": 45,
-        "inertia": 50,
-        "roadSensitivity": 80,
+        "roadSensitivity": 90,
         "accChart": [
             [
                 0,
@@ -188,10 +34,10 @@ DEFAULT_PROFILES = [
             ],
             [
                 30,
-                25
+                20
             ],
             [
-                65,
+                60,
                 70
             ],
             [
@@ -205,12 +51,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                25,
+                20,
                 20
             ],
             [
-                60,
-                65
+                50,
+                60
             ],
             [
                 100,
@@ -223,12 +69,166 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "No Content Manager ou menu do AC: Configurações ➔ Controles ➔ Volante (DirectInput).",
+            "Ganho Geral de FFB: 80% (ideal para os motores duplos de 3.2 Nm evitarem clipping).",
+            "Filtro: 0% | Força Mínima: 0% | Zebras: 40% | Efeitos de Pista: 30% | Derrapagem (Slip): 20%.",
+            "Efeito de Subesterço: DESATIVADO (garante alinhamento físico real e contraesterço veloz)."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "assetto_corsa_competizione",
+        "name": "Assetto Corsa Competizione",
+        "game": "Assetto Corsa Competizione (ACC)",
+        "category": "Simulador GT3 / GT4 Oficial",
+        "mode_required": "D-Input",
+        "description": "Configuração refinada para o motor de física ACC com telemetria direta de suspensão.",
+        "angle": 900,
+        "ffb": 80,
+        "ffbReverse": False,
+        "spring": 0,
+        "damping": 40,
+        "friction": 50,
+        "inertia": 50,
+        "roadSensitivity": 90,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                20
+            ],
+            [
+                60,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                20,
+                20
+            ],
+            [
+                50,
+                60
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "Opções ➔ Controles ➔ Tipo de Dispositivo: Volante Personalizado.",
+            "Ganho (Gain): 70% a 80% | Força Mínima: 0% | Dynamic Damping: 100%.",
+            "Efeitos de Estrada (Road Effects): 20% a 30%.",
+            "Trava de Direção (Steer Lock): 900° (o ACC adapta automaticamente para cada carro GT3)."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "automobilista_1",
+        "name": "Automobilista (AMS 1)",
+        "game": "Automobilista",
+        "category": "Simulador Clássico Brasileiro",
+        "mode_required": "D-Input",
+        "description": "Física do motor rFactor 1 com FFB invertido necessário para o torque correto.",
+        "angle": 900,
+        "ffb": 80,
+        "ffbReverse": True,
+        "spring": 10,
+        "damping": 40,
+        "friction": 50,
+        "inertia": 50,
+        "roadSensitivity": 80,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                20
+            ],
+            [
+                60,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
             ],
             [
                 100,
@@ -237,7 +237,7 @@ DEFAULT_PROFILES = [
         ],
         "in_game_tips": [
             "Configurações ➔ Controles ➔ Volante Personalizado.",
-            "Força de FFB: Configure valor NEGATIVO (ex: -75%) se não usar o botão Inverter FFB do app.",
+            "Força de FFB: Configure valor NEGATIVO (ex: -80%) se não usar o botão Inverter FFB do app.",
             "Tipo de Efeitos: RealFeel Puro | Suavização: 0 a 2.",
             "Mapeie o Câmbio em H para as categorias de Stock Car antigas e Copa Classic."
         ],
@@ -254,7 +254,7 @@ DEFAULT_PROFILES = [
         "ffb": 80,
         "ffbReverse": False,
         "spring": 20,
-        "damping": 35,
+        "damping": 40,
         "friction": 40,
         "inertia": 40,
         "roadSensitivity": 80,
@@ -265,10 +265,10 @@ DEFAULT_PROFILES = [
             ],
             [
                 30,
-                25
+                30
             ],
             [
-                65,
+                70,
                 70
             ],
             [
@@ -286,8 +286,8 @@ DEFAULT_PROFILES = [
                 20
             ],
             [
-                55,
-                65
+                60,
+                70
             ],
             [
                 100,
@@ -300,12 +300,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -315,7 +315,7 @@ DEFAULT_PROFILES = [
         "in_game_tips": [
             "Opções ➔ Controles: Tipo = 'Personalizado' (Custom Wheel).",
             "Execute a 'Calibração do Volante' (gire tudo até 900° e volte a 90°).",
-            "Perfil de FFB: 'Default+' | Ganho: 75% | Low Force Boost (LFB): 10 | FX: 40 | Damping: 25.",
+            "Perfil de FFB: 'Default+' | Ganho: 80% | Low Force Boost (LFB): 10 | FX: 40 | Damping: 30.",
             "Para Copa Truck: Aumente o ângulo do W270 para 1080° para simulação fiel do caminhão."
         ],
         "keymap": {}
@@ -330,10 +330,10 @@ DEFAULT_PROFILES = [
         "angle": 900,
         "ffb": 80,
         "ffbReverse": False,
-        "spring": 25,
+        "spring": 30,
         "damping": 40,
-        "friction": 35,
-        "inertia": 45,
+        "friction": 40,
+        "inertia": 50,
         "roadSensitivity": 90,
         "accChart": [
             [
@@ -341,12 +341,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                25,
+                30,
                 20
             ],
             [
                 60,
-                65
+                70
             ],
             [
                 100,
@@ -360,10 +360,10 @@ DEFAULT_PROFILES = [
             ],
             [
                 20,
-                15
+                20
             ],
             [
-                55,
+                60,
                 60
             ],
             [
@@ -377,12 +377,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -406,12 +406,12 @@ DEFAULT_PROFILES = [
         "mode_required": "D-Input",
         "description": "Ângulo máximo de 1080° com volante pesado simulando a coluna de direção de ônibus.",
         "angle": 1080,
-        "ffb": 65,
+        "ffb": 70,
         "ffbReverse": False,
         "spring": 70,
-        "damping": 75,
+        "damping": 80,
         "friction": 70,
-        "inertia": 85,
+        "inertia": 90,
         "roadSensitivity": 40,
         "accChart": [
             [
@@ -419,12 +419,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                35,
+                40,
                 30
             ],
             [
                 70,
-                65
+                70
             ],
             [
                 100,
@@ -438,11 +438,11 @@ DEFAULT_PROFILES = [
             ],
             [
                 30,
-                25
+                30
             ],
             [
-                65,
-                65
+                70,
+                70
             ],
             [
                 100,
@@ -455,12 +455,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -472,6 +472,160 @@ DEFAULT_PROFILES = [
             "Graus de Rotação: 1080° | Sensibilidade de Direção: 1.0 (Linear) | Zona Morta: 0%.",
             "Mapeie as Borboletas (Paddles) para abrir/fechar portas dianteiras e traseiras dos passageiros.",
             "Use o D-Pad para olhar nos espelhos retrovisores e bilhetagem."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "carx_drift",
+        "name": "CarX Drift Racing Online",
+        "game": "CarX Drift Racing Online",
+        "category": "Drift & Manobras",
+        "mode_required": "D-Input",
+        "description": "Retorno ultrarrápido para transições suaves de drift e contraesterço sem travamentos.",
+        "angle": 900,
+        "ffb": 90,
+        "ffbReverse": False,
+        "spring": 40,
+        "damping": 20,
+        "friction": 20,
+        "inertia": 20,
+        "roadSensitivity": 70,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                40
+            ],
+            [
+                60,
+                80
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                20
+            ],
+            [
+                60,
+                60
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                20
+            ],
+            [
+                50,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "No CarX: Assistência de Direção = DESATIVADA (fundamental para pilotar no volante).",
+            "Ângulo de Giro no CarX = 900°.",
+            "Suavização de FFB = 0.2 a 0.3 (quanto menor, mais rápido o volante solta para a transição de drift).",
+            "Mapeie o Freio de Mão para a chave de handbrake do câmbio do W270 (botão 25)."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "city_car_driving",
+        "name": "City Car Driving (Autoescola)",
+        "game": "City Car Driving",
+        "category": "Simulador Urbano",
+        "mode_required": "D-Input",
+        "description": "Direção urbana realista a 1080°, controle de ponto de embreagem e seta no volante.",
+        "angle": 1080,
+        "ffb": 70,
+        "ffbReverse": False,
+        "spring": 70,
+        "damping": 60,
+        "friction": 60,
+        "inertia": 70,
+        "roadSensitivity": 40,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                40,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                40,
+                30
+            ],
+            [
+                70,
+                60
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "No menu Controles: selecione 'Volante'.",
+            "Mapeie o Eixo X para Direção, Eixo Y para Acelerador, Eixo Z para Freio e Rotação Z para Embreagem.",
+            "Ative 'Embreagem Manual' e 'Câmbio H' para treinamento realista de trânsito.",
+            "Use o D-Pad para olhar para os lados e os botões L1/R1 para acionar as setas de conversão."
         ],
         "keymap": {}
     },
@@ -488,7 +642,7 @@ DEFAULT_PROFILES = [
         "spring": 70,
         "damping": 60,
         "friction": 60,
-        "inertia": 65,
+        "inertia": 70,
         "roadSensitivity": 50,
         "accChart": [
             [
@@ -496,12 +650,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -514,12 +668,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -532,12 +686,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -559,13 +713,13 @@ DEFAULT_PROFILES = [
         "mode_required": "X-Input ou D-Input",
         "description": "Suporte aprimorado para teste de suspensão, alinhamento e voltas rápidas no circuito.",
         "angle": 900,
-        "ffb": 65,
+        "ffb": 70,
         "ffbReverse": False,
-        "spring": 65,
+        "spring": 70,
         "damping": 60,
         "friction": 60,
-        "inertia": 65,
-        "roadSensitivity": 55,
+        "inertia": 70,
+        "roadSensitivity": 60,
         "accChart": [
             [
                 0,
@@ -573,10 +727,10 @@ DEFAULT_PROFILES = [
             ],
             [
                 30,
-                25
+                30
             ],
             [
-                65,
+                70,
                 70
             ],
             [
@@ -590,12 +744,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                25,
+                30,
                 20
             ],
             [
                 60,
-                65
+                70
             ],
             [
                 100,
@@ -608,12 +762,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -628,98 +782,20 @@ DEFAULT_PROFILES = [
         "keymap": {}
     },
     {
-        "id": "euro_truck_2",
-        "name": "Euro Truck Simulator 2",
-        "game": "Euro Truck Simulator 2",
-        "category": "Simulador de Caminhão & Cargas",
+        "id": "default_w270",
+        "name": "Padrão de Fábrica PCYES W270",
+        "game": "Configuração Padrão W270",
+        "category": "Padrão de Fábrica",
         "mode_required": "D-Input",
-        "description": "Rotação total a 1080°, suporte a divisor de caixa alta/baixa e peso hidráulico de direção.",
-        "angle": 1080,
-        "ffb": 60,
-        "ffbReverse": False,
-        "spring": 70,
-        "damping": 75,
-        "friction": 65,
-        "inertia": 85,
-        "roadSensitivity": 35,
-        "accChart": [
-            [
-                0,
-                0
-            ],
-            [
-                40,
-                30
-            ],
-            [
-                70,
-                65
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "brakeChart": [
-            [
-                0,
-                0
-            ],
-            [
-                33,
-                33
-            ],
-            [
-                66,
-                66
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "clutchChart": [
-            [
-                0,
-                0
-            ],
-            [
-                33,
-                33
-            ],
-            [
-                66,
-                66
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "in_game_tips": [
-            "Assistente de Entrada: Selecione 'Volante' ➔ 'Câmbio em H'.",
-            "Layout do Câmbio: Escolha 'Range' ou 'Splitter' (para marchas de 1 a 12 ou 18).",
-            "Mapeie o botão lateral do câmbio W270 (botão 26) como 'Divisor de Marchas 1'.",
-            "Sensibilidade da Direção = 100% (Linear) | Não Linearidade = 0%.",
-            "Centragem em Alta Velocidade = 65% | Atrito da Superfície = 75%."
-        ],
-        "keymap": {}
-    },
-    {
-        "id": "forza_horizon",
-        "name": "Forza Horizon (FH5 / FH6)",
-        "game": "Forza Horizon",
-        "category": "Mundo Aberto / Arcade-Sim",
-        "mode_required": "D-Input (Perfil Personalizado)",
-        "description": "Corrige o problema de direção dura e falta de contraesterço em drift e corridas.",
-        "angle": 540,
+        "description": "Configuração balanceada recomendada pela engenharia da PCYES para uso geral.",
+        "angle": 900,
         "ffb": 70,
-        "ffbReverse": True,
-        "spring": 45,
-        "damping": 35,
-        "friction": 40,
-        "inertia": 40,
-        "roadSensitivity": 70,
+        "ffbReverse": False,
+        "spring": 60,
+        "damping": 60,
+        "friction": 70,
+        "inertia": 70,
+        "roadSensitivity": 50,
         "accChart": [
             [
                 0,
@@ -727,10 +803,10 @@ DEFAULT_PROFILES = [
             ],
             [
                 30,
-                25
+                30
             ],
             [
-                65,
+                70,
                 70
             ],
             [
@@ -744,12 +820,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                25,
-                20
+                30,
+                30
             ],
             [
-                60,
-                65
+                70,
+                70
             ],
             [
                 100,
@@ -762,12 +838,395 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "Perfil padrão balanceado para qualquer novo jogo que você queira experimentar.",
+            "Caso sinta o volante muito pesado em manobras lentas, reduza a 'Fricção' ou 'Amortecimento'."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "dirt_rally_2",
+        "name": "Dirt Rally 2.0 & EA WRC",
+        "game": "Dirt Rally 2.0 / EA SPORTS WRC",
+        "category": "Rally / Todo Terreno",
+        "mode_required": "D-Input",
+        "description": "Contraesterço ágil a 540°, resposta imediata para saltos, poças de lama e cascalho.",
+        "angle": 540,
+        "ffb": 90,
+        "ffbReverse": False,
+        "spring": 40,
+        "damping": 30,
+        "friction": 40,
+        "inertia": 30,
+        "roadSensitivity": 100,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                60,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                20,
+                30
+            ],
+            [
+                50,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "No Dirt Rally: Calibre o volante a 540° ou ative 'Soft Lock' a 540°.",
+            "Saturação da Direção: 100%, Zona Morta: 0%, Linearidade: 0.",
+            "Torque / Alinhamento Automático: 80%, Atrito da Roda: 30%, Atrito do Pneu: 40%, Suspensão: 80%."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "euro_truck_2",
+        "name": "Euro Truck Simulator 2",
+        "game": "Euro Truck Simulator 2",
+        "category": "Simulador de Caminhão & Cargas",
+        "mode_required": "D-Input",
+        "description": "Rotação total a 1080°, suporte a divisor de caixa alta/baixa e peso hidráulico de direção.",
+        "angle": 1080,
+        "ffb": 60,
+        "ffbReverse": False,
+        "spring": 70,
+        "damping": 80,
+        "friction": 70,
+        "inertia": 90,
+        "roadSensitivity": 40,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                40,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "Assistente de Entrada: Selecione 'Volante' ➔ 'Câmbio em H'.",
+            "Layout do Câmbio: Escolha 'Range' ou 'Splitter' (para marchas de 1 a 12 ou 18).",
+            "Mapeie o botão lateral do câmbio W270 (botão 26) como 'Divisor de Marchas 1'.",
+            "Sensibilidade da Direção = 100% (Linear) | Não Linearidade = 0%.",
+            "Centragem em Alta Velocidade = 70% | Atrito da Superfície = 80%."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "f1_24",
+        "name": "F1 23 & F1 24",
+        "game": "EA SPORTS F1 23 / F1 24",
+        "category": "Fórmula 1 Monoposto",
+        "mode_required": "D-Input",
+        "description": "Giro curto de 360° para curvas fechadas em circuitos como Mônaco sem tirar as mãos.",
+        "angle": 360,
+        "ffb": 80,
+        "ffbReverse": False,
+        "spring": 30,
+        "damping": 30,
+        "friction": 30,
+        "inertia": 30,
+        "roadSensitivity": 90,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                80
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                20,
+                20
+            ],
+            [
+                60,
+                80
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "No F1: Acesse Configurações de Controle ➔ Calibração.",
+            "Ângulo de Rotação Máxima da Direção = 360°.",
+            "Zona Morta da Direção = 0, Linearidade da Direção = 0.",
+            "Em Force Feedback: Força do Efeito = 80%, Efeitos de Pista = 40%, Efeitos de Zebra = 40%, Amortecedor = 20%."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "f1_25_26",
+        "name": "F1 2025 / 2026",
+        "game": "EA SPORTS F1 25 / F1 26",
+        "category": "Fórmula 1 Monoposto",
+        "mode_required": "D-Input",
+        "description": "Giro ágil de 400° ajustado para os monopostos e regulamentos de 2025 e 2026 com resposta de alta fidelidade.",
+        "angle": 400,
+        "ffb": 80,
+        "ffbReverse": False,
+        "spring": 30,
+        "damping": 30,
+        "friction": 30,
+        "inertia": 30,
+        "roadSensitivity": 90,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                80
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                20,
+                20
+            ],
+            [
+                60,
+                80
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "No F1: Acesse Configurações de Controle ➔ Calibração.",
+            "Ângulo de Rotação Máxima da Direção = 400°.",
+            "Zona Morta da Direção = 0, Linearidade da Direção = 0.",
+            "Em Force Feedback: Força do Efeito = 80%, Efeitos de Pista = 40%, Efeitos de Zebra = 40%, Amortecedor = 20%."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "forza_horizon",
+        "name": "Forza Horizon (FH5 / FH6)",
+        "game": "Forza Horizon",
+        "category": "Mundo Aberto / Arcade-Sim",
+        "mode_required": "D-Input (Perfil Personalizado)",
+        "description": "Corrige o problema de direção dura e falta de contraesterço em drift e corridas.",
+        "angle": 540,
+        "ffb": 70,
+        "ffbReverse": True,
+        "spring": 50,
+        "damping": 40,
+        "friction": 40,
+        "inertia": 40,
+        "roadSensitivity": 70,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                20
+            ],
+            [
+                60,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
             ],
             [
                 100,
@@ -792,8 +1251,8 @@ DEFAULT_PROFILES = [
         "angle": 900,
         "ffb": 70,
         "ffbReverse": False,
-        "spring": 55,
-        "damping": 45,
+        "spring": 60,
+        "damping": 50,
         "friction": 50,
         "inertia": 50,
         "roadSensitivity": 60,
@@ -804,10 +1263,10 @@ DEFAULT_PROFILES = [
             ],
             [
                 30,
-                25
+                30
             ],
             [
-                65,
+                70,
                 70
             ],
             [
@@ -821,12 +1280,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                25,
+                30,
                 20
             ],
             [
                 60,
-                65
+                70
             ],
             [
                 100,
@@ -844,7 +1303,7 @@ DEFAULT_PROFILES = [
             ],
             [
                 60,
-                65
+                70
             ],
             [
                 100,
@@ -867,12 +1326,12 @@ DEFAULT_PROFILES = [
         "mode_required": "D-Input",
         "description": "Alinhamento fiel para pilotar a van, o trator e o Satsuma pelas estradas de terra.",
         "angle": 900,
-        "ffb": 75,
+        "ffb": 80,
         "ffbReverse": False,
         "spring": 50,
         "damping": 50,
         "friction": 60,
-        "inertia": 55,
+        "inertia": 60,
         "roadSensitivity": 80,
         "accChart": [
             [
@@ -881,10 +1340,10 @@ DEFAULT_PROFILES = [
             ],
             [
                 30,
-                25
+                30
             ],
             [
-                65,
+                70,
                 70
             ],
             [
@@ -898,12 +1357,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                25,
+                30,
                 20
             ],
             [
                 60,
-                65
+                70
             ],
             [
                 100,
@@ -916,12 +1375,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                35,
-                25
+                40,
+                30
             ],
             [
-                65,
-                65
+                70,
+                70
             ],
             [
                 100,
@@ -938,20 +1397,20 @@ DEFAULT_PROFILES = [
         "keymap": {}
     },
     {
-        "id": "the_crew_2",
-        "name": "The Crew 2",
-        "game": "The Crew 2",
-        "category": "Mundo Aberto EUA / Arcade",
-        "mode_required": "D-Input ou X-Input",
-        "description": "Resposta dinâmica e rápida a 540° para carros de rua, hipercarros e off-road.",
-        "angle": 540,
-        "ffb": 70,
+        "id": "need_for_speed",
+        "name": "Need for Speed (Unbound / Heat)",
+        "game": "Need for Speed Unbound / Heat / Payback",
+        "category": "Arcade / Corridas Clandestinas",
+        "mode_required": "X-Input",
+        "description": "Como o NFS não suporta volantes DirectInput genericamente, utiliza emulação X-Input nativa.",
+        "angle": 360,
+        "ffb": 60,
         "ffbReverse": False,
         "spring": 50,
-        "damping": 40,
-        "friction": 45,
-        "inertia": 45,
-        "roadSensitivity": 65,
+        "damping": 50,
+        "friction": 50,
+        "inertia": 40,
+        "roadSensitivity": 50,
         "accChart": [
             [
                 0,
@@ -962,7 +1421,7 @@ DEFAULT_PROFILES = [
                 30
             ],
             [
-                65,
+                70,
                 70
             ],
             [
@@ -976,12 +1435,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                25,
-                25
+                30,
+                30
             ],
             [
-                60,
-                65
+                70,
+                70
             ],
             [
                 100,
@@ -994,12 +1453,165 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "ATENÇÃO: A franquia Need for Speed no PC NÃO tem suporte nativo para volantes DirectInput genéricos.",
+            "SOLUÇÃO: Alterne o W270 para o 'Modo X-Input' pelo botão no topo do aplicativo.",
+            "No Modo X-Input, o jogo reconhecerá o volante como um controle oficial Xbox 360/One, funcionando perfeitamente em todas as corridas, menus e nitro!",
+            "Recomendamos ângulo de 360° a 540° para respostas rápidas de drift e curvas de alta velocidade."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "snowrunner",
+        "name": "SnowRunner & MudRunner",
+        "game": "SnowRunner / Expeditions",
+        "category": "Off-Road Pesado",
+        "mode_required": "D-Input",
+        "description": "Amortecimento reforçado para simular terreno pesado de lama, atoleiros e neve.",
+        "angle": 900,
+        "ffb": 90,
+        "ffbReverse": False,
+        "spring": 60,
+        "damping": 90,
+        "friction": 80,
+        "inertia": 80,
+        "roadSensitivity": 60,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                40,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "in_game_tips": [
+            "No SnowRunner: Configurações ➔ Volante ➔ Tipo de Volante: 'DirectInput'.",
+            "Mapeie os eixos manualmente em 'Configurar Controles'.",
+            "Ganho de FFB = 80%, Fricção do Terreno = 80%, Força de Centralização = 50%."
+        ],
+        "keymap": {}
+    },
+    {
+        "id": "the_crew_2",
+        "name": "The Crew 2",
+        "game": "The Crew 2",
+        "category": "Mundo Aberto EUA / Arcade",
+        "mode_required": "D-Input ou X-Input",
+        "description": "Resposta dinâmica e rápida a 540° para carros de rua, hipercarros e off-road.",
+        "angle": 540,
+        "ffb": 70,
+        "ffbReverse": False,
+        "spring": 50,
+        "damping": 40,
+        "friction": 50,
+        "inertia": 50,
+        "roadSensitivity": 70,
+        "accChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "brakeChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                60,
+                70
+            ],
+            [
+                100,
+                100
+            ]
+        ],
+        "clutchChart": [
+            [
+                0,
+                0
+            ],
+            [
+                30,
+                30
+            ],
+            [
+                70,
+                70
             ],
             [
                 100,
@@ -1025,22 +1637,22 @@ DEFAULT_PROFILES = [
         "ffb": 80,
         "ffbReverse": False,
         "spring": 40,
-        "damping": 55,
-        "friction": 65,
+        "damping": 60,
+        "friction": 70,
         "inertia": 60,
-        "roadSensitivity": 85,
+        "roadSensitivity": 90,
         "accChart": [
             [
                 0,
                 0
             ],
             [
-                25,
+                30,
                 30
             ],
             [
                 60,
-                75
+                80
             ],
             [
                 100,
@@ -1057,8 +1669,8 @@ DEFAULT_PROFILES = [
                 20
             ],
             [
-                55,
-                65
+                60,
+                70
             ],
             [
                 100,
@@ -1071,12 +1683,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -1085,7 +1697,7 @@ DEFAULT_PROFILES = [
         ],
         "in_game_tips": [
             "Opções ➔ Controles ➔ 'PCYES W270'.",
-            "Força Geral de FFB: 75% | Fricção de Pneu: 60% | Terreno/Solo: 65% | Colisão: 50%.",
+            "Força Geral de FFB: 80% | Fricção de Pneu: 60% | Terreno/Solo: 70% | Colisão: 50%.",
             "Bloqueio de Direção (Soft Lock): 540°.",
             "Mapeie a chave do câmbio W270 (botão 25) para o Freio de Mão hidráulico de rally."
         ],
@@ -1103,21 +1715,21 @@ DEFAULT_PROFILES = [
         "ffbReverse": False,
         "spring": 40,
         "damping": 50,
-        "friction": 65,
+        "friction": 70,
         "inertia": 60,
-        "roadSensitivity": 85,
+        "roadSensitivity": 90,
         "accChart": [
             [
                 0,
                 0
             ],
             [
-                25,
+                30,
                 30
             ],
             [
                 60,
-                75
+                80
             ],
             [
                 100,
@@ -1134,8 +1746,8 @@ DEFAULT_PROFILES = [
                 20
             ],
             [
-                55,
-                65
+                60,
+                70
             ],
             [
                 100,
@@ -1148,12 +1760,12 @@ DEFAULT_PROFILES = [
                 0
             ],
             [
-                33,
-                33
+                30,
+                30
             ],
             [
-                66,
-                66
+                70,
+                70
             ],
             [
                 100,
@@ -1162,84 +1774,9 @@ DEFAULT_PROFILES = [
         ],
         "in_game_tips": [
             "Opções ➔ Jogabilidade ➔ Controles: Detectar Volante.",
-            "Torque de Autoalinhamento (SAT): 80% | Suspensão: 60% | Deslizamento de Pneu: 55%.",
+            "Torque de Autoalinhamento (SAT): 80% | Suspensão: 60% | Deslizamento de Pneu: 60%.",
             "Limite Físico: 540° | Zonas mortas: 0%.",
             "Mapeie o Freio de Mão no botão 25 do câmbio para curvas fechadas em cotovelo (Hairpin)."
-        ],
-        "keymap": {}
-    },
-    {
-        "id": "default_w270",
-        "name": "Padrão de Fábrica PCYES W270",
-        "game": "Configuração Padrão W270",
-        "category": "Padrão de Fábrica",
-        "mode_required": "D-Input",
-        "description": "Configuração balanceada recomendada pela engenharia da PCYES para uso geral.",
-        "angle": 900,
-        "ffb": 70,
-        "ffbReverse": False,
-        "spring": 60,
-        "damping": 60,
-        "friction": 70,
-        "inertia": 70,
-        "roadSensitivity": 50,
-        "accChart": [
-            [
-                0,
-                0
-            ],
-            [
-                33,
-                33
-            ],
-            [
-                66,
-                66
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "brakeChart": [
-            [
-                0,
-                0
-            ],
-            [
-                33,
-                33
-            ],
-            [
-                66,
-                66
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "clutchChart": [
-            [
-                0,
-                0
-            ],
-            [
-                33,
-                33
-            ],
-            [
-                66,
-                66
-            ],
-            [
-                100,
-                100
-            ]
-        ],
-        "in_game_tips": [
-            "Perfil padrão balanceado para qualquer novo jogo que você queira experimentar.",
-            "Caso sinta o volante muito pesado em manobras lentas, reduza a 'Fricção' ou 'Amortecimento'."
         ],
         "keymap": {}
     }

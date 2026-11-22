@@ -6,11 +6,11 @@
     "mode_required": "D-Input",
     "description": "Física do motor rFactor 1 com FFB invertido necessário para o torque correto.",
     "angle": 900,
-    "ffb": 75,
+    "ffb": 80,
     "ffbReverse": true,
     "spring": 10,
     "damping": 40,
-    "friction": 45,
+    "friction": 50,
     "inertia": 50,
     "roadSensitivity": 80,
     "accChart": [
@@ -20,10 +20,10 @@
         ],
         [
             30,
-            25
+            30
         ],
         [
-            65,
+            70,
             70
         ],
         [
@@ -37,12 +37,12 @@
             0
         ],
         [
-            25,
+            30,
             20
         ],
         [
             60,
-            65
+            70
         ],
         [
             100,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,
@@ -69,7 +69,7 @@
     ],
     "in_game_tips": [
         "Configurações ➔ Controles ➔ Volante Personalizado.",
-        "Força de FFB: Configure valor NEGATIVO (ex: -75%) se não usar o botão Inverter FFB do app.",
+        "Força de FFB: Configure valor NEGATIVO (ex: -80%) se não usar o botão Inverter FFB do app.",
         "Tipo de Efeitos: RealFeel Puro | Suavização: 0 a 2.",
         "Mapeie o Câmbio em H para as categorias de Stock Car antigas e Copa Classic."
     ],

@@ -6,12 +6,12 @@
     "mode_required": "D-Input",
     "description": "Ângulo máximo de 1080° com volante pesado simulando a coluna de direção de ônibus.",
     "angle": 1080,
-    "ffb": 65,
+    "ffb": 70,
     "ffbReverse": false,
     "spring": 70,
-    "damping": 75,
+    "damping": 80,
     "friction": 70,
-    "inertia": 85,
+    "inertia": 90,
     "roadSensitivity": 40,
     "accChart": [
         [
@@ -19,12 +19,12 @@
             0
         ],
         [
-            35,
+            40,
             30
         ],
         [
             70,
-            65
+            70
         ],
         [
             100,
@@ -38,11 +38,11 @@
         ],
         [
             30,
-            25
+            30
         ],
         [
-            65,
-            65
+            70,
+            70
         ],
         [
             100,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,

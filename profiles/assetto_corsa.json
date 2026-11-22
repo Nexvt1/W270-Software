@@ -6,25 +6,25 @@
     "mode_required": "D-Input",
     "description": "Fidelidade máxima para sentir zebras, transferência de peso e limite de aderência.",
     "angle": 900,
-    "ffb": 75,
+    "ffb": 80,
     "ffbReverse": false,
     "spring": 0,
-    "damping": 45,
-    "friction": 55,
+    "damping": 50,
+    "friction": 60,
     "inertia": 50,
-    "roadSensitivity": 85,
+    "roadSensitivity": 90,
     "accChart": [
         [
             0,
             0
         ],
         [
-            25,
+            30,
             20
         ],
         [
             60,
-            65
+            70
         ],
         [
             100,
@@ -38,7 +38,7 @@
         ],
         [
             20,
-            15
+            20
         ],
         [
             50,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,
@@ -69,8 +69,8 @@
     ],
     "in_game_tips": [
         "No Content Manager ou menu do AC: Configurações ➔ Controles ➔ Volante (DirectInput).",
-        "Ganho Geral de FFB: 75% a 80% (ideal para os motores duplos de 3.2 Nm evitarem clipping).",
-        "Filtro: 0% | Força Mínima: 3% | Zebras: 35% | Efeitos de Pista: 30% | Derrapagem (Slip): 20%.",
+        "Ganho Geral de FFB: 80% (ideal para os motores duplos de 3.2 Nm evitarem clipping).",
+        "Filtro: 0% | Força Mínima: 0% | Zebras: 40% | Efeitos de Pista: 30% | Derrapagem (Slip): 20%.",
         "Efeito de Subesterço: DESATIVADO (garante alinhamento físico real e contraesterço veloz)."
     ],
     "keymap": {}

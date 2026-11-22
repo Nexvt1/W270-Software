@@ -10,9 +10,9 @@
     "ffbReverse": false,
     "spring": 50,
     "damping": 40,
-    "friction": 45,
-    "inertia": 45,
-    "roadSensitivity": 65,
+    "friction": 50,
+    "inertia": 50,
+    "roadSensitivity": 70,
     "accChart": [
         [
             0,
@@ -23,7 +23,7 @@
             30
         ],
         [
-            65,
+            70,
             70
         ],
         [
@@ -37,12 +37,12 @@
             0
         ],
         [
-            25,
-            25
+            30,
+            30
         ],
         [
             60,
-            65
+            70
         ],
         [
             100,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,

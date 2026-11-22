@@ -6,12 +6,12 @@
     "mode_required": "D-Input",
     "description": "Alinhamento fiel para pilotar a van, o trator e o Satsuma pelas estradas de terra.",
     "angle": 900,
-    "ffb": 75,
+    "ffb": 80,
     "ffbReverse": false,
     "spring": 50,
     "damping": 50,
     "friction": 60,
-    "inertia": 55,
+    "inertia": 60,
     "roadSensitivity": 80,
     "accChart": [
         [
@@ -20,10 +20,10 @@
         ],
         [
             30,
-            25
+            30
         ],
         [
-            65,
+            70,
             70
         ],
         [
@@ -37,12 +37,12 @@
             0
         ],
         [
-            25,
+            30,
             20
         ],
         [
             60,
-            65
+            70
         ],
         [
             100,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            35,
-            25
+            40,
+            30
         ],
         [
-            65,
-            65
+            70,
+            70
         ],
         [
             100,

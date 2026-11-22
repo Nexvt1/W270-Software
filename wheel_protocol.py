@@ -230,9 +230,9 @@ def pack_profile_block(num: int, mode: int, profile_data: dict) -> bytearray:
     keymap = profile_data.get("keymap", {})
     params = profile_data.get("params", [900, 70, 60, 60, 70, 70])
     ffb_reverse = profile_data.get("ffbReverse", False)
-    acc_chart = profile_data.get("accChart", [[0, 0], [33, 33], [66, 66], [100, 100]])
-    brake_chart = profile_data.get("brakeChart", [[0, 0], [33, 33], [66, 66], [100, 100]])
-    clutch_chart = profile_data.get("clutchChart", [[0, 0], [33, 33], [66, 66], [100, 100]])
+    acc_chart = profile_data.get("accChart", [[0, 0], [30, 30], [70, 70], [100, 100]])
+    brake_chart = profile_data.get("brakeChart", [[0, 0], [30, 30], [70, 70], [100, 100]])
+    clutch_chart = profile_data.get("clutchChart", [[0, 0], [30, 30], [70, 70], [100, 100]])
 
     pos = 3
     if num == 0:

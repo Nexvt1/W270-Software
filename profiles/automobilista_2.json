@@ -9,7 +9,7 @@
     "ffb": 80,
     "ffbReverse": false,
     "spring": 20,
-    "damping": 35,
+    "damping": 40,
     "friction": 40,
     "inertia": 40,
     "roadSensitivity": 80,
@@ -20,10 +20,10 @@
         ],
         [
             30,
-            25
+            30
         ],
         [
-            65,
+            70,
             70
         ],
         [
@@ -41,8 +41,8 @@
             20
         ],
         [
-            55,
-            65
+            60,
+            70
         ],
         [
             100,
@@ -55,12 +55,12 @@
             0
         ],
         [
-            33,
-            33
+            30,
+            30
         ],
         [
-            66,
-            66
+            70,
+            70
         ],
         [
             100,
@@ -70,7 +70,7 @@
     "in_game_tips": [
         "Opções ➔ Controles: Tipo = 'Personalizado' (Custom Wheel).",
         "Execute a 'Calibração do Volante' (gire tudo até 900° e volte a 90°).",
-        "Perfil de FFB: 'Default+' | Ganho: 75% | Low Force Boost (LFB): 10 | FX: 40 | Damping: 25.",
+        "Perfil de FFB: 'Default+' | Ganho: 80% | Low Force Boost (LFB): 10 | FX: 40 | Damping: 30.",
         "Para Copa Truck: Aumente o ângulo do W270 para 1080° para simulação fiel do caminhão."
     ],
     "keymap": {}

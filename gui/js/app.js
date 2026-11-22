@@ -16,9 +16,9 @@ let currentWheelState = {
   friction: 70,
   inertia: 70,
   mode: 1, // 1 = D-Input, 2 = X-Input
-  accChart: [[0, 0], [33, 33], [66, 66], [100, 100]],
-  brakeChart: [[0, 0], [33, 33], [66, 66], [100, 100]],
-  clutchChart: [[0, 0], [33, 33], [66, 66], [100, 100]],
+  accChart: [[0, 0], [30, 30], [70, 70], [100, 100]],
+  brakeChart: [[0, 0], [30, 30], [70, 70], [100, 100]],
+  clutchChart: [[0, 0], [30, 30], [70, 70], [100, 100]],
   keymap: {}
 };
 
@@ -413,7 +413,7 @@ function selectPedal(pedalType) {
   document.getElementById('btnPedalClutch').className = pedalType === 'clutch' ? 'btn btn-primary' : 'btn';
 
   const chartKey = `${pedalType}Chart`;
-  const chartData = currentWheelState[chartKey] || [[0, 0], [33, 33], [66, 66], [100, 100]];
+  const chartData = currentWheelState[chartKey] || [[0, 0], [30, 30], [70, 70], [100, 100]];
 
   for (let i = 0; i < 4; i++) {
     const val = chartData[i][1];
@@ -427,7 +427,7 @@ function updatePedalPoint(ptIndex, val) {
   val = parseInt(val);
   const chartKey = `${activePedal}Chart`;
   if (!currentWheelState[chartKey]) {
-    currentWheelState[chartKey] = [[0, 0], [33, 33], [66, 66], [100, 100]];
+    currentWheelState[chartKey] = [[0, 0], [30, 30], [70, 70], [100, 100]];
   }
   currentWheelState[chartKey][ptIndex][1] = val;
   document.getElementById(`valPt${ptIndex}`).textContent = `${val}%`;
@@ -436,7 +436,7 @@ function updatePedalPoint(ptIndex, val) {
 
 function renderPedalChart() {
   const chartKey = `${activePedal}Chart`;
-  const pts = currentWheelState[chartKey] || [[0, 0], [33, 33], [66, 66], [100, 100]];
+  const pts = currentWheelState[chartKey] || [[0, 0], [30, 30], [70, 70], [100, 100]];
 
   const mapX = (v) => 30 + (v / 100) * 250;
   const mapY = (v) => 170 - (v / 100) * 150;
@@ -465,13 +465,13 @@ function renderPedalChart() {
 function applyPedalPreset(presetName) {
   let pts;
   if (presetName === 'linear') {
-    pts = [[0, 0], [33, 33], [66, 66], [100, 100]];
+    pts = [[0, 0], [30, 30], [70, 70], [100, 100]];
   } else if (presetName === 'compete') {
-    pts = [[0, 0], [20, 15], [55, 65], [100, 100]];
+    pts = [[0, 0], [20, 20], [60, 70], [100, 100]];
   } else if (presetName === 'comfort') {
-    pts = [[0, 0], [35, 25], [70, 60], [100, 100]];
+    pts = [[0, 0], [40, 20], [70, 60], [100, 100]];
   } else if (presetName === 'aggressive') {
-    pts = [[0, 0], [30, 45], [60, 80], [100, 100]];
+    pts = [[0, 0], [30, 50], [60, 80], [100, 100]];
   }
 
   const chartKey = `${activePedal}Chart`;
@@ -943,15 +943,15 @@ async function submitCreateProfile() {
     category: category,
     description: "Configuração nativa personalizada para PCYES W270.",
     angle: currentWheelState.angle,
-    ffb: currentWheelState.ffb,
+    ffb: Math.max(10, Math.min(100, Math.round((currentWheelState.ffb || 70) / 10) * 10)),
     ffbReverse: currentWheelState.ffbReverse,
-    spring: currentWheelState.spring,
-    damping: currentWheelState.damping,
-    friction: currentWheelState.friction,
-    inertia: currentWheelState.inertia,
-    accChart: currentWheelState.accChart,
-    brakeChart: currentWheelState.brakeChart,
-    clutchChart: currentWheelState.clutchChart,
+    spring: Math.max(0, Math.min(100, Math.round((currentWheelState.spring || 0) / 10) * 10)),
+    damping: Math.max(10, Math.min(100, Math.round((currentWheelState.damping || 50) / 10) * 10)),
+    friction: Math.max(10, Math.min(100, Math.round((currentWheelState.friction || 50) / 10) * 10)),
+    inertia: Math.max(10, Math.min(100, Math.round((currentWheelState.inertia || 50) / 10) * 10)),
+    accChart: (currentWheelState.accChart || []).map(pt => [Math.round(pt[0] / 10) * 10, Math.round(pt[1] / 10) * 10]),
+    brakeChart: (currentWheelState.brakeChart || []).map(pt => [Math.round(pt[0] / 10) * 10, Math.round(pt[1] / 10) * 10]),
+    clutchChart: (currentWheelState.clutchChart || []).map(pt => [Math.round(pt[0] / 10) * 10, Math.round(pt[1] / 10) * 10]),
     in_game_tips: [
       "Perfil criado pelo usuário.",
       "Ajuste a sensibilidade de direção no jogo para 100% linear."

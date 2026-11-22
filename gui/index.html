@@ -141,7 +141,8 @@
 
             <div class="preset-pills" id="anglePresets">
               <span class="pill" data-angle="270" onclick="setAnglePreset(270)">270° (Kart / Arcade)</span>
-              <span class="pill" data-angle="360" onclick="setAnglePreset(360)">360° (F1 Monoposto)</span>
+              <span class="pill" data-angle="360" onclick="setAnglePreset(360)">360° (F1 Clássico)</span>
+              <span class="pill" data-angle="400" onclick="setAnglePreset(400)">400° (F1 2025/26)</span>
               <span class="pill" data-angle="540" onclick="setAnglePreset(540)">540° (Rally / WRC)</span>
               <span class="pill active" id="pill900" data-angle="900" onclick="setAnglePreset(900)">900° (GT / Pista)</span>
               <span class="pill" data-angle="1080" onclick="setAnglePreset(1080)">1080° (Caminhões / ETS2)</span>
@@ -187,16 +188,16 @@
                 <span class="control-value" id="valFfb">70% • 2.24 Nm</span>
               </div>
               <div class="slider-wrapper">
-                <input type="range" id="sliderFfb" min="0" max="100" value="70" oninput="updateFfbSlider(this.value)">
+                <input type="range" id="sliderFfb" min="0" max="100" step="10" value="70" oninput="updateFfbSlider(this.value)">
               </div>
             </div>
 
             <div class="preset-pills" id="ffbPresets">
-              <span class="pill" data-ffb="25" onclick="setFfbPreset(25)">0.8 Nm (25%)</span>
-              <span class="pill" data-ffb="50" onclick="setFfbPreset(50)">1.6 Nm (50%)</span>
+              <span class="pill" data-ffb="20" onclick="setFfbPreset(20)">0.64 Nm (20%)</span>
+              <span class="pill" data-ffb="50" onclick="setFfbPreset(50)">1.60 Nm (50%)</span>
               <span class="pill active" id="pillFfb70" data-ffb="70" onclick="setFfbPreset(70)">2.24 Nm (70% Padrão)</span>
               <span class="pill" data-ffb="80" onclick="setFfbPreset(80)">2.56 Nm (80% Sim)</span>
-              <span class="pill" data-ffb="100" onclick="setFfbPreset(100)">3.2 Nm (100% Max)</span>
+              <span class="pill" data-ffb="100" onclick="setFfbPreset(100)">3.20 Nm (100% Max)</span>
             </div>
 
             <div class="switch-group" style="margin-top:14px;">
@@ -224,7 +225,7 @@
                   <span>Mola de Centralização (Centering Spring)</span>
                   <span class="control-value" id="valSpring">60%</span>
                 </div>
-                <input type="range" id="sliderSpring" min="0" max="100" value="60" oninput="updateForceSlider()">
+                <input type="range" id="sliderSpring" min="0" max="100" step="10" value="60" oninput="updateForceSlider()">
               </div>
 
               <div class="control-group">
@@ -232,7 +233,7 @@
                   <span>Amortecimento Hidráulico (Damping)</span>
                   <span class="control-value" id="valDamping">60%</span>
                 </div>
-                <input type="range" id="sliderDamping" min="0" max="100" value="60" oninput="updateForceSlider()">
+                <input type="range" id="sliderDamping" min="0" max="100" step="10" value="60" oninput="updateForceSlider()">
               </div>
 
               <div class="control-group">
@@ -240,7 +241,7 @@
                   <span>Fricção Mecânica dos Pneus (Friction)</span>
                   <span class="control-value" id="valFriction">70%</span>
                 </div>
-                <input type="range" id="sliderFriction" min="0" max="100" value="70" oninput="updateForceSlider()">
+                <input type="range" id="sliderFriction" min="0" max="100" step="10" value="70" oninput="updateForceSlider()">
               </div>
 
               <div class="control-group">
@@ -248,7 +249,7 @@
                   <span>Inércia da Caixa de Direção (Inertia)</span>
                   <span class="control-value" id="valInertia">70%</span>
                 </div>
-                <input type="range" id="sliderInertia" min="0" max="100" value="70" oninput="updateForceSlider()">
+                <input type="range" id="sliderInertia" min="0" max="100" step="10" value="70" oninput="updateForceSlider()">
               </div>
             </div>
           </div>
@@ -308,23 +309,23 @@
                 <span>Zona Morta Inicial (Ponto 1)</span>
                 <span class="control-value" id="valPt0">0%</span>
               </div>
-              <input type="range" id="sliderPt0" min="0" max="25" value="0" oninput="updatePedalPoint(0, this.value)">
+              <input type="range" id="sliderPt0" min="0" max="20" step="10" value="0" oninput="updatePedalPoint(0, this.value)">
             </div>
 
             <div class="control-group">
               <div class="control-label">
                 <span>Sensibilidade Inicial / Média (Ponto 2)</span>
-                <span class="control-value" id="valPt1">33%</span>
+                <span class="control-value" id="valPt1">30%</span>
               </div>
-              <input type="range" id="sliderPt1" min="10" max="60" value="33" oninput="updatePedalPoint(1, this.value)">
+              <input type="range" id="sliderPt1" min="10" max="60" step="10" value="30" oninput="updatePedalPoint(1, this.value)">
             </div>
 
             <div class="control-group">
               <div class="control-label">
                 <span>Pressão Alta / Ponto de Mordida (Ponto 3)</span>
-                <span class="control-value" id="valPt2">66%</span>
+                <span class="control-value" id="valPt2">70%</span>
               </div>
-              <input type="range" id="sliderPt2" min="40" max="90" value="66" oninput="updatePedalPoint(2, this.value)">
+              <input type="range" id="sliderPt2" min="40" max="90" step="10" value="70" oninput="updatePedalPoint(2, this.value)">
             </div>
 
             <div class="control-group">
@@ -332,7 +333,7 @@
                 <span>Fim de Curso / Trava (Ponto 4)</span>
                 <span class="control-value" id="valPt3">100%</span>
               </div>
-              <input type="range" id="sliderPt3" min="75" max="100" value="100" oninput="updatePedalPoint(3, this.value)">
+              <input type="range" id="sliderPt3" min="70" max="100" step="10" value="100" oninput="updatePedalPoint(3, this.value)">
             </div>
           </div>
 
